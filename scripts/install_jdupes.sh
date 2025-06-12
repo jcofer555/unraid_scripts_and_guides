@@ -21,7 +21,7 @@ download_package() {
     local pkg_path="/boot/extra/$pkg_name"
 
     if [ -f "$pkg_path" ]; then
-        echo "Package $pkg_name already exists in /boot/extra/, skipping download"
+        echo "Package $pkg_name already exists in /boot/extra, skipping download"
     else
         echo "Downloading $pkg_name"
         if wget -q -O "$pkg_path" "$pkg_url"; then
