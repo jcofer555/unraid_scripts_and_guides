@@ -2,9 +2,9 @@ Updating unRAID OS to a new stable release - jcofer/AgentXXL hybrid version:
 
 ****
 Read the release notes and these instructions before attempting the upgrade (see note 1 below). If you have any questions, please ask in the #unraid-stable channel of the unRAID Official Discord server which can be joined at this url https://discord.unraid.net
-****
 
-1. Go to the Boot Device section of the Main tab and click on Flash. Make a USB backup and test it to make sure it extracts correctly.
+DO NOT SKIP STEP 1
+***1. Go to the Boot Device section of the Main tab and click on Flash. Make a USB backup and test it to make sure it extracts correctly.***
 2. Optional: If using unRAID Connect for USB backups, go to Settings —> Management Access and make sure the backup is up to date.
 3. If it isn’t installed, install the Fix Common Problems plugin as well as fully update all plugins that are installed.
 4. Go to Settings —> Docker and set Enable Docker to no to stop the Docker service and all containers.
