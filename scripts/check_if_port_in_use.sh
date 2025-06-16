@@ -3,7 +3,7 @@
 # This script checks unraids webui ports, docker container ports, ports that VM's use for vnc, and whether VM manager service is running which then uses port 53
 
 # Change this to the port you want to search
-PORT_TO_SEARCH="61208"
+PORT_TO_SEARCH="67"
 
 # DON'T CHANGE ANYTHING BELOW
 
@@ -35,8 +35,8 @@ if [[ "$PORT_TO_SEARCH" == "$UNRAID_HTTP_PORT" ]]; then
 elif [[ "$PORT_TO_SEARCH" == "$UNRAID_HTTPS_PORT" ]]; then
     echo "Port $PORT_TO_SEARCH is being used by Unraid's WebUI for HTTPS."
 # Check matches because unraid's vm manager service is running    
-elif [[ "$PORT_TO_SEARCH" == "53" && -n "$VM_MANAGER_ACTIVE" ]]; then
-    echo "Port $PORT_TO_SEARCH is in use because Unraid's VM Manager service is running."
+elif [[ ( "$PORT_TO_SEARCH" == "53" || "$PORT_TO_SEARCH" == "67" ) && -n "$VM_MANAGER_ACTIVE" ]]; then
+    echo "Port $PORT_TO_SEARCH is in use by dnsmasq because Unraid's VM Manager service is running."
 # Check doesn't match anything that is checked    
 elif [[ -z "$RESULT" ]]; then
     echo "Nothing that is checked is using port $PORT_TO_SEARCH."
