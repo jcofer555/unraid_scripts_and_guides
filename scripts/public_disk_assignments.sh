@@ -5,6 +5,8 @@ DISKS_FILE="/var/local/emhttp/disks.ini"
 OUTPUT_FILE="/boot/config/disk_assignments.txt"
 SKIP_DRIVES=("parity" "parity2")
 
+    #### DON'T CHANGE ANYTHING BELOW HERE ####
+
 # Checking if disks.ini exists
 echo "Checking if disks.ini exists"
 if [[ ! -f "$DISKS_FILE" ]]; then
