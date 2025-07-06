@@ -1,5 +1,7 @@
 STEPS TO RECREATE YOUR FLASH DRIVE USING THE SAME FLASH DRIVE:
 
+**** make sure to do step1 ****
+
 1. backup your current flash drive either in unraid with the flash backup button located by clicking flash in blue letters on the main page or by 
 copying and pasting all files using another OS like windows to your desktop or another folder
 2. if your flash drive was having errors then I'd suggest doing a full format not a quick format using windows or another OS, if no errors then 
