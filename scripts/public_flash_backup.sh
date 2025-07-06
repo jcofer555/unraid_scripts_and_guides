@@ -9,7 +9,7 @@ MAX_BACKUPS=7  # Number of backups to keep
 # Run the backup
 backup_file="${BACKUP_LOCATION}flash_$(date +"%m-%d-%Y").tar.gz"
 echo "Starting backup of Unraid flash drive to $backup_file"
-if tar czf "$backup_file" /boot; then
+if tar czf "$backup_file" -C / boot; then
     echo "Flash backup archive created $backup_file"
 else
     echo "Backup of Unraid flash drive FAILED"
