@@ -63,7 +63,7 @@ while IFS='=' read -r key value; do
             continue
         fi
         if [[ -z $disk_name || -z $device_id || -z $status ]]; then
-            log_error "Missing required disk info name=$disk_name, id=$device_id, status=$status"
+            echo "Missing required disk info name=$disk_name, id=$device_id, status=$status"
         else
             printf "DISK %-${max_disk_len}s  DEVICE %-${max_device_len}s  STATUS %-${max_status_len}s\n" \
                 "$disk_name" "$device_id" "$status" | tee -a "$OUTPUT_FILE"
