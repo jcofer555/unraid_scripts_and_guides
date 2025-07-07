@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-BACKUP_LOCATION="/mnt/user/data/computer/backups/unraid_flash/"
+BACKUP_LOCATION="/mnt/user/data/computer/backups/unraid_flash/"     # make sure to keep the / at the end of the path
 MAX_BACKUPS=7  # Number of backups to keep
 
     #### DON'T CHANGE ANYTHING BELOW HERE ####
