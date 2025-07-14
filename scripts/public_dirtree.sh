@@ -1,12 +1,12 @@
 #!/bin/sh
 
-# Output paths
+# Variables
 SHARE_TREE_PATH="/mnt/user/data/sharestree"
 DISK_TREE_PATH="/mnt/user/data/diskstree"
-
-# Short names for shares and disks
 SHARES_TO_SCAN=(data mymedia)
 DISKS_TO_SCAN=(disk1 disk2 disk3)
+
+    #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 echo "****Starting scan for shares****"
 echo
