@@ -19,5 +19,4 @@ overwrite
 6. if you have a folder named extra in your backup, copy it to the flash drive
 7. all done, boot unraid with your recreated flash drive
 8. ***only use this step if you switched to a different flash drive.***
-go to tools > registration and click replace key to do the license transfer process, you can look here for more info on that https://
-docs.unraid.net/unraid-os/manual/changing-the-flash-device/
+go to tools > registration and click replace key to do the license transfer process, you can look here for more info on that https://docs.unraid.net/unraid-os/manual/changing-the-flash-device/
