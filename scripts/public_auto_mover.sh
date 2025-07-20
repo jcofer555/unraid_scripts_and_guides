@@ -1,35 +1,58 @@
 #!/bin/bash
 
-# Variables
-POOL_NAME="cache"
-THRESHOLD=1
+# Configurable Variables
+POOL_NAME="cache"      # Name of pool
+THRESHOLD=5           # Threshold %
+DRY_RUN="no"           # Set to "yes" to simulate without running mover
 
-		#### DON'T CHANGE ANYTHING BELOW HERE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
-# Mover check
-echo "Checking if mover is already running"
+MOUNT_POINT="/mnt/${POOL_NAME}"
+
+# Check if mover is already running
+echo "🔍 Checking if mover is already running..."
 if pgrep -x mover &>/dev/null; then
-    echo "Mover is running, waiting 15 seconds and checking again for safety"
+    echo "⏳ Mover detected. Sleeping 15s..."
     sleep 15
-    pgrep -f mover &>/dev/null && {
-        echo "Mover still running after 15s, exiting"
+    if pgrep -x mover &>/dev/null; then
+        echo "❌ Mover still running after 15s — exiting"
         exit 1
-    }
+    else
+        echo "✅ Mover has stopped — continuing"
+    fi
+else
+    echo "✅ Mover not running — continuing"
 fi
-echo "Mover is not currently running, continuing"
 
-# Check disk usage threshold
-echo "Checking if /mnt/${POOL_NAME} is over threshold of ${THRESHOLD}%"
-USED=$(df -h --si "/mnt/${POOL_NAME}" | awk 'NR==2 {print $5}' | sed 's/%//')
-[ "$USED" -le "$THRESHOLD" ] && {
-    echo "/mnt/${POOL_NAME} is ${USED}% full, under threshold of ${THRESHOLD}%, exiting"
+# Check disk usage
+echo "🔍 Checking if $MOUNT_POINT is over ${THRESHOLD}% threshold"
+USED=$(df -h --si "$MOUNT_POINT" | awk 'NR==2 {print $5}' | sed 's/%//')
+
+# Validate USED is not empty
+if [ -z "$USED" ]; then
+    echo "❌ Failed to retrieve disk usage for $MOUNT_POINT — exiting"
     exit 1
-}
-echo "/mnt/${POOL_NAME} is over threshold of ${THRESHOLD}% so starting mover"
+fi
 
-# Start mover
-mover start
+echo "📊 $POOL_NAME is currently ${USED}% full"
 
-# After mover dusk usage check
-USED2=$(df -h --si "/mnt/${POOL_NAME}" | awk 'NR==2 {print $5}' | sed 's/%//')
-echo "/mnt/${POOL_NAME} is now ${USED2}% full"
+if [ "$USED" -le "$THRESHOLD" ]; then
+    echo "🟢 Usage is under threshold — no action needed"
+    exit 0
+fi
+
+echo "⚠️ $POOL_NAME is over threshold — mover trigger condition met"
+
+# Dry run check
+if [ "$DRY_RUN" = "yes" ]; then
+    echo "🔧 Dry Run enabled — skipping mover start"
+else
+    echo "🛠️ Starting mover for $POOL_NAME..."
+    mover start
+fi
+
+# After-action disk usage (optional)
+USED2=$(df -h --si "$MOUNT_POINT" | awk 'NR==2 {print $5}' | sed 's/%//')
+echo "📉 Post-trigger disk usage: ${USED2}% full"
+
+echo "✅ Automover script completed"
