@@ -1,6 +1,6 @@
-STEPS TO RECREATE YOUR FLASH DRIVE USING THE SAME FLASH DRIVE:
+# STEPS TO RECREATE YOUR FLASH DRIVE USING THE SAME FLASH DRIVE:
 
-**** make sure to do step1 ****
+*** **make sure to do step1** ***
 
 1. backup your current flash drive either in unraid with the flash backup button located by clicking flash in blue letters on the main page or by 
 copying and pasting all files using another OS like windows to your desktop or another folder
@@ -8,8 +8,8 @@ copying and pasting all files using another OS like windows to your desktop or a
 continue, if errors it might be worth changing to a new flash drive.
 3. download and install the usb creator at https://unraid.net/download, then use the creator to create your flash drive fresh with the version of 
 unraid you wish to be on (sometimes it's worth picking the same version you were on prior)
-note: you can determine what version you were on prior by opening changes.txt file at the root of the flash drive backup you made in step 1
-note: if the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at 
+    - note: you can determine what version you were on prior by opening changes.txt file at the root of the flash drive backup you made in step 1
+    - note: if the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at 
 https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
 4. once creator or manual method is done successfully copy the entire config folder from your backup onto the flash drive, if you get a popup asking 
 if you want to overwrite files say yes, then make sure there is only 1 .key file within config, deleting all but the one that matches your current 
