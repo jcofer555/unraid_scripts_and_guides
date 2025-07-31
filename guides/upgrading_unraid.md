@@ -7,7 +7,7 @@ Read the release notes and these instructions before attempting the upgrade (see
 
 DO NOT SKIP STEP 1!
 
-1. *** **Go to the Boot Device section of the Main tab and click on Flash. Make a USB backup and test it to make sure it extracts correctly.** ***
+1. ** **Go to the Boot Device section of the Main tab and click on Flash. Make a USB backup and test it to make sure it extracts correctly.** **
     - Optional: If using unRAID Connect for USB backups, go to Settings —> Management Access and make sure the backup is up to date.
 3. If it isn’t installed, install the Fix Common Problems plugin as well as fully update all plugins that are installed.
 4. Go to Settings —> Docker and set Enable Docker to no to stop the Docker service and all containers.
