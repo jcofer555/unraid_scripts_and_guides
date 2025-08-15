@@ -8,8 +8,7 @@ Also before starting run this command via terminal and if any results show pleas
 ```bash
 docker volume list -f "label=com.docker.volume.anonymous" -q | xargs -I{} docker container list --filter "volume={}"
 ```
-   - note: if you can't start docker you won't be able to run this
-thanks to EDACerton for the command
+   - note: if you can't start docker you won't be able to run this, thanks to EDACerton for the command
  
 1. make note of the names of any custom networks you created with docker network create
     - note: if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with 
