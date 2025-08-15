@@ -21,16 +21,10 @@ thanks to EDACerton for the command
     - optional: change the vdisk size
 3. in settings > docker put a check in the delete vdisk file box and hit delete at the bottom
 4. in settings > docker change enable docker to yes and hit apply
-5. create the custom docker network or networks you had prior by going to unraids terminal and typing the below command for each one needing created
-```bash
-docker network create name
-```
+5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name`
 changing name to the names you need it to be. If correct you will see a string of characters as output
-
    - note: if you hadn't created any custom networks you can skip this step
-
 6. go to apps, then previous apps and select all or select the ones you want and hit install
-
 7. wait for it to finish and you're done now with a fresh docker.img
 
 you won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash 
