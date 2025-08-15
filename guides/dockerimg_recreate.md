@@ -26,8 +26,11 @@ thanks to EDACerton for the command
 docker network create name
 ```
 changing name to the names you need it to be. If correct you will see a string of characters as output
-    - note: if you hadn't created any custom networks you can skip this step   
+
+   - note: if you hadn't created any custom networks you can skip this step
+
 6. go to apps, then previous apps and select all or select the ones you want and hit install
+
 7. wait for it to finish and you're done now with a fresh docker.img
 
 you won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash 
