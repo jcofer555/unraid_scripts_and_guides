@@ -25,6 +25,7 @@ thanks to EDACerton for the command
 ```bash
 docker network create name
 ```
+
 changing name to the names you need it to be
     - note: if you hadn't created any custom networks you can skip this step
 6. go to apps, then previous apps and select all or select the ones you want and hit install
