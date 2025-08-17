@@ -1,4 +1,4 @@
-# Updating unRAID OS to a new stable release - jcofer/AgentXXL hybrid version: 
+# Updating unRAID OS to a new stable release - jcofer555/AgentXXL: 
 
 ****
 Read the release notes and these instructions before attempting the upgrade (see note 1 below). If you have any questions, please ask in the 
