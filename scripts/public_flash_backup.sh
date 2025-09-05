@@ -22,6 +22,8 @@ if tar -tf "$backup_file" > /dev/null 2>&1; then
     echo "Backup file integrity check passed"
 else
     echo "Backup file integrity check FAILED"
+    echo "Deleting backup since integrity check failed"
+    rm -rf "$backup_file"
     exit 1
 fi
 
