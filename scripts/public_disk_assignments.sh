@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Variables
-DISKS_FILE="/var/local/emhttp/disks.ini"
 OUTPUT_FILE="/mnt/user/backups/disk_assignments.txt"
 SKIP_DRIVES=("parity" "parity2")
 
@@ -9,8 +8,8 @@ SKIP_DRIVES=("parity" "parity2")
 
 # Checking if disks.ini exists
 echo "Checking if disks.ini exists"
-if [[ ! -f "$DISKS_FILE" ]]; then
-    echo "Error, $DISKS_FILE doesn't exist, exiting"
+if [[ ! -f "/var/local/emhttp/disks.ini" ]]; then
+    echo "Error, /var/local/emhttp/disks.ini doesn't exist, exiting"
     exit 1
 fi
 echo "disks.ini exists, starting output of disk assignments"
@@ -48,8 +47,8 @@ while IFS='=' read -r key value; do
         (( ${#device_id} > max_device_len )) && max_device_len=${#device_id}
         (( ${#status} > max_status_len )) && max_status_len=${#status}
     fi
-done < "$DISKS_FILE" || {
-    echo "Failed to parse $DISKS_FILE during determining phase, Ensure the file exists and is formatted correctly"
+done < "/var/local/emhttp/disks.ini" || {
+    echo "Failed to parse /var/local/emhttp/disks.ini during determining phase, Ensure the file exists and is formatted correctly"
 }
 
 # Second pass to print formatted output
@@ -71,8 +70,8 @@ while IFS='=' read -r key value; do
                 "$disk_name" "$device_id" "$status" | tee -a "$OUTPUT_FILE"
         fi
     fi
-done < "$DISKS_FILE" || {
-    echo "Failed to parse $DISKS_FILE during creation phase, Ensure the file exists and is formatted correctly"
+done < "/var/local/emhttp/disks.ini" || {
+    echo "Failed to parse /var/local/emhttp/disks.ini during creation phase, Ensure the file exists and is formatted correctly"
 }
 
 echo "Script is finished and disk assignments created at $OUTPUT_FILE"
