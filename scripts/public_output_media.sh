@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # TV shows directories
-DIR1="/mnt/user/mymedia/media/tv - need to encode"
-DIR2="/mnt/user/mymedia/media/tv"
-OUTPUT1="/mnt/user/data/computer/tv_shows_list.txt"
+TVSHOWSDIR1="/mnt/user/mymedia/media/tv - need to encode"
+TVSHOWSDIR2="/mnt/user/mymedia/media/tv"
+TVSHOWOUTPUT="/mnt/user/data/computer/tv_shows_list.txt"
 
 # Movie Directories
-DIR3="/mnt/user/mymedia/media/movies/animated"
-DIR4="/mnt/user/mymedia/media/movies/a-z"
-DIR5="/mnt/user/mymedia/media/movies/a-z - need to encode"
-DIR6="/mnt/user/mymedia/media/movies/marvel-dc"
-OUTPUT2="/mnt/user/data/computer/movies_list.txt"
+MOVIESDIR1="/mnt/user/mymedia/media/movies/animated"
+MOVIESDIR2="/mnt/user/mymedia/media/movies/a-z"
+MOVIESDIR3="/mnt/user/mymedia/media/movies/a-z - need to encode"
+MOVIESDIR4="/mnt/user/mymedia/media/movies/marvel-dc"
+MOVIESOUTPUT="/mnt/user/data/computer/movies_list.txt"
 
 
     #### DON'T CHANGE ANYTHING HERE EXCEPT FOR THE BOTTOM VARIABLES SECTIONS TO MATCH THE VARIABLES ABOVE ####
@@ -52,7 +52,7 @@ process_dirs() {
 }
 
 # TV shows variables
-process_dirs "$DIR1" "$DIR2" "$OUTPUT1"
+process_dirs "$TVSHOWSDIR1" "$TVSHOWSDIR2" "$OUTPUT1"
 
 # Movies variables
-process_dirs "$DIR3" "$DIR4" "$DIR5" "$DIR6" "$OUTPUT2"
+process_dirs "$MOVIESDIR1" "$MOVIESDIR2" "$MOVIESDIR3" "$MOVIESDIR4" "$OUTPUT2"
