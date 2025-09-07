@@ -2,7 +2,7 @@
 
 # Variables
 DISKS_FILE="/var/local/emhttp/disks.ini"
-OUTPUT_FILE="/boot/config/disk_assignments.txt"
+OUTPUT_FILE="/mnt/user/backups/disk_assignments.txt"
 SKIP_DRIVES=("parity" "parity2")
 
     #### DON'T CHANGE ANYTHING BELOW HERE ####
