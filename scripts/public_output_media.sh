@@ -5,7 +5,7 @@ TVSHOWSDIR1="/mnt/user/mymedia/media/tv - need to encode"
 TVSHOWSDIR2="/mnt/user/mymedia/media/tv"
 TVSHOWOUTPUT="/mnt/user/data/computer/tv_shows_list.txt"
 
-# Movie Directories
+# Movies Directories
 MOVIESDIR1="/mnt/user/mymedia/media/movies/animated"
 MOVIESDIR2="/mnt/user/mymedia/media/movies/a-z"
 MOVIESDIR3="/mnt/user/mymedia/media/movies/a-z - need to encode"
