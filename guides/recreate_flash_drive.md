@@ -1,4 +1,4 @@
-# STEPS TO RECREATE YOUR FLASH DRIVE USING THE SAME FLASH DRIVE:
+# STEPS TO RECREATE YOUR FLASH DRIVE USING THE SAME FLASH DRIVE OR A NEW FLASH DRIVE:
 
 > [!IMPORTANT]
 > **make sure to do step 1**
@@ -18,7 +18,7 @@ https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
 > make sure there is only one .key file within config, deleting all but the one that matches your current license if there happens to be more than one in there
 ### 5. copy the syslinux.cfg file from your backups syslinux folder and put into the syslinux folder on the flash drive and say yes if you get asked to overwrite
 > [!NOTE]
-> don't copy the entire syslinux folder, copy only the syslinux.cfg file
+> don't copy the entire syslinux folder, copy only the syslinux.cfg file that is within the syslinux folder
 ### 6. if you have a folder named extra in your backup, copy it to the flash drive
 ### 7. all done, boot unraid with your recreated flash drive
 ### 8. ***only use this step if you switched to a different flash drive.***
