@@ -29,6 +29,8 @@ drive for the xml templates before starting like mentioned above
   > [!NOTE]
   > if you hadn't created any custom networks you can skip this step
 ## 6. go to apps, then previous apps and select all or select the ones you want and hit install
+  > [!NOTE]
+  > this will take some time to download your selected containers images, be patient until it finishes
 ## 7. wait for it to finish and you're done now with a fresh docker.img
 > [!NOTE]
 > BELOW IS THE THE USERSCRIPT DETAILS TO USE IF NEEDED, PUT EVERYTHING STARTING WITH `#!/bin/bash` IN THE SCRIPT AND THE RESULTS WILL DISPLAY IN THE SCRIPTS LOG \
