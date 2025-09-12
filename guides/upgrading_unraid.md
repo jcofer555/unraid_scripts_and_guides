@@ -30,13 +30,13 @@
 ### 12. Once it reboots, login to the webgui and check to make sure all array and pool devices appear OK
   > [!NOTE]
   > Optional: go to settings —> global share settings and set permit exclusive shares to yes \
-  > Click on permit exclusive shares under global share settings and read the context sensitive help by pressing f1 on the keyboard. Also see the unraid documentation for more info at \
+  > Read the context sensitive help by pressing f1 on the keyboard. Also see the unraid documentation for more info at \
   > https://docs.unraid.net/unraid-os/release-notes/6.12.0/#exclusive-shares
 ### 13. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
 ### 14. Once the array has started and things look OK, re-enable docker and vm manager services and confirm that your containers and vm's operate as expected
 ### 15. If you prefer array auto start, go to settings —> disk settings and set enable auto start back to yes so the array autostarts on boot
-> [!NOTE]
-> Many users prefer to leave auto start disabled so they can check their array and pool devices are all recognized properly after a shutdown/reboot
+  > [!NOTE]
+  > Many users prefer to leave auto start disabled so they can check their array and pool devices are all recognized properly after a shutdown/reboot
 ### 16. All done, enjoy the new version unraid os
   > [!WARNING]
   > Some plugins have issues going from one version to the next, happens more often with big version jumps. Known ones that i'm aware of is folderview, mover tuning, and themepark \
