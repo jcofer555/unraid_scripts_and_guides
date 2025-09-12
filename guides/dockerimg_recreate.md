@@ -13,13 +13,12 @@ drive for the xml templates before starting like mentioned above
 ## 1. make note of the names of any custom networks you created with docker network create
   > [!NOTE]
   > if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in \
-  > if you hadn't created any custom networks you can skip this step
+  > if you hadn't created any custom networks you can skip step 1
 
-  > [!TIP]
-  > optional: go to apps > previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
 ## 2. stop docker at settings > docker by setting enable docker to no and hit apply
   > [!TIP]
-  > optional: backup the docker.img file using a file manager or via terminal (check path at settings > docker > Docker vDisk location)
+  > optional: backup the docker.img file using a file manager or via terminal (check path at settings > docker > Docker vDisk location) \
+  > optional: go to apps > previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
 
   > [!NOTE]
   > optional: change the vdisk size
@@ -29,7 +28,7 @@ drive for the xml templates before starting like mentioned above
   > confirm docker is stopped by checking the status at the top right of the settings > docker screen
 ## 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
   > [!NOTE]
-  > if you hadn't created any custom networks you can skip this step
+  > if you hadn't created any custom networks you can skip step 5
 ## 6. go to apps, then previous apps and select all or select the ones you want and hit install
   > [!NOTE]
   > this will take some time to download your selected containers images, be patient until it finishes
