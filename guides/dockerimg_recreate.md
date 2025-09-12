@@ -2,14 +2,16 @@
 > [!IMPORTANT] 
 >  Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
 >  If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
+
 > [!IMPORTANT]
 > you won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash 
 drive for the xml templates before starting like mentioned above
+
   > [!WARNING]
   > this process only works for containers that use templates, so if using compose or run manually then this isn't the guide for you
  
 1. make note of the names of any custom networks you created with docker network create
-  >  [!NOTE]
+  > [!NOTE]
   > if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in
   > if you hadn't created any custom networks you can skip this step
   > [!TIP]
