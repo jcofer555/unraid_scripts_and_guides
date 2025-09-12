@@ -14,27 +14,30 @@
   > [!NOTE]
   > If using unraid connect for USB backups, go to settings —> management access and make sure the backup is up to date
 ### 2. If it isn’t installed, install the fix common problems plugin as well as fully update all plugins that are installed
-### 4. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
+### 3. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
   > Confirm docker is stopped by checking the status at the top right of the settings > docker screen
-### 5. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no to stop the service
+### 4. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no to stop the service
   > [!NOTE]
   > Confirm vm manager is stopped by checking the status at the top right of the settings > vm manager screen
-### 6. Go to settings > disk settings and set enable auto start to no to prevent the array from auto-starting after the update
-### 7. Close any open web terminal sessions, ssh sessions, and make sure local terminal (at the server with a monitor) is logged out, and exit the unRAID webgui on any browsers/devices not being used to perform the update (on local or remote systems)
-### 8. If you are using the user scripts plugin, or you run scripts manually make sure no scripts are running
-### 9. Go to the main page on unraids webui and unmount any disks and any smb/nfs shares under the unassigned devices section
-### 10. Stop the array from the array operations section at the bottom of the main page of the unraids webui. Confirm it says array stopped in the bottom taskbar
-### 11. Perform the upgrade at tools —> update os. Make sure to wait for any driver related plugins like nvidia drivers, realtek drivers, or others to confirm they have been updated
-### 12. Reboot ONLY once you get a notification that it is ready to reboot
-### 13. Once it reboots, login to the webgui and check to make sure all array and pool devices appear OK
+### 5. Go to settings > disk settings and set enable auto start to no to prevent the array from auto-starting after the update
+### 6. Close any open web terminal sessions, ssh sessions, and make sure local terminal (at the server with a monitor) is logged out, and exit the unRAID webgui on any browsers/devices not being used to perform the update (on local or remote systems)
+### 7. If you are using the user scripts plugin, or you run scripts manually make sure no scripts are running
+### 8. Go to the main page on unraids webui and unmount any disks and any smb/nfs shares under the unassigned devices section
+### 9. Stop the array from the array operations section at the bottom of the main page of the unraids webui. Confirm it says array stopped in the bottom taskbar
+### 10. Perform the upgrade at tools —> update os. Make sure to wait for any driver related plugins like nvidia drivers, realtek drivers, or others to confirm they have been updated
+### 11. Reboot ONLY once you get a notification that it is ready to reboot
+### 12. Once it reboots, login to the webgui and check to make sure all array and pool devices appear OK
   > [!NOTE]
   > Optional: go to settings —> global share settings and set permit exclusive shares to yes \
   > Click on permit exclusive shares under global share settings and read the context sensitive help by pressing f1 on the keyboard. Also see the unraid documentation for more info at \
   > https://docs.unraid.net/unraid-os/release-notes/6.12.0/#exclusive-shares
-### 14. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
-### 15. Once the array has started and things look OK, re-enable docker and vm manager services and confirm that your containers and vm's operate as expected
-### 16. If you prefer array auto start, go to settings —> disk settings and set enable auto start back to yes so the array autostarts on boot
+### 13. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
+### 14. Once the array has started and things look OK, re-enable docker and vm manager services and confirm that your containers and vm's operate as expected
+### 15. If you prefer array auto start, go to settings —> disk settings and set enable auto start back to yes so the array autostarts on boot
 > [!NOTE]
 > Many users prefer to leave auto start disabled so they can check their array and pool devices are all recognized properly after a shutdown/reboot
-### 17. All done, enjoy the new version unraid os
+### 16. All done, enjoy the new version unraid os
+  > [!WARNING]
+  > Some plugins have issues going from one version to the next, happens more often with big version jumps. Known ones that i'm aware of is folderview, mover tuning, and themepark \
+  > If you use these plugins and have problems with the system after updating you might need to remove them and look for new versions of them
