@@ -12,7 +12,7 @@ drive for the xml templates before starting like mentioned above
  
 1. make note of the names of any custom networks you created with docker network create
   > [!NOTE]
-  > if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in
+  > if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in \
   > if you hadn't created any custom networks you can skip this step
 
   > [!TIP]
