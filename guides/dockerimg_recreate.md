@@ -25,6 +25,8 @@ drive for the xml templates before starting like mentioned above
   > optional: change the vdisk size
 ## 3. in settings > docker put a check in the delete vdisk file box and hit delete at the bottom
 ## 4. in settings > docker change enable docker to yes and hit apply
+  > [!NOTE]
+  > confirm docker is stopped by checking the status at the top right of the settings > docker screen
 ## 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
   > [!NOTE]
   > if you hadn't created any custom networks you can skip this step
