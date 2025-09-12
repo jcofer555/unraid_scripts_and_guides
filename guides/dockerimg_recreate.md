@@ -1,6 +1,6 @@
 # STEPS TO RECREATE YOUR DOCKER.IMG:
 > [!IMPORTANT] 
->  Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
+>  Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files. \
 >  If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
 
 > [!IMPORTANT]
@@ -27,11 +27,11 @@ drive for the xml templates before starting like mentioned above
 4. in settings > docker change enable docker to yes and hit apply
 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
   > [!NOTE]
-  > note: if you hadn't created any custom networks you can skip this step
+  > if you hadn't created any custom networks you can skip this step
 6. go to apps, then previous apps and select all or select the ones you want and hit install
 7. wait for it to finish and you're done now with a fresh docker.img
 > [!NOTE]
-> BELOW IS THE THE USERSCRIPT DETAILS TO USE IF NEEDED, PUT EVERYTHING STARTING WITH `#!/bin/bash` IN THE SCRIPT AND THE RESULTS WILL DISPLAY IN THE SCRIPTS LOG
+> BELOW IS THE THE USERSCRIPT DETAILS TO USE IF NEEDED, PUT EVERYTHING STARTING WITH `#!/bin/bash` IN THE SCRIPT AND THE RESULTS WILL DISPLAY IN THE SCRIPTS LOG \
 > this pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
 
 > [!IMPORTANT]
