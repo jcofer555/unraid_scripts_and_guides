@@ -7,20 +7,20 @@
 ### 2. If your flash drive was having errors then I'd suggest doing a full format not a quick format using windows or another OS, if no errors then continue, if errors it might be worth changing to a new flash drive.
 ### 3. Download and install the usb creator at https://unraid.net/download, then use the creator to create your flash drive fresh with the version of unraid you wish to be on 
 > [!TIP]
-> sometimes it's worth picking the same version you were on prior \
-> if the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at \
+> Sometimes it's worth picking the same version you were on prior \
+> If the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at \
 https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
 
 > [!NOTE]
-> you can determine what version you were on prior by opening changes.txt file at the root of the flash drive backup you made in step 1
+> You can determine what version you were on prior by opening changes.txt file at the root of the flash drive backup you made in step 1
 ### 4. Once creator or manual method is done successfully copy the entire config folder from your backup onto the flash drive, if you get a popup asking if you want to overwrite files say yes
 > [!IMPORTANT]
-> make sure there is only one .key file within config, deleting all but the one that matches your current license if there happens to be more than one in there
+> Make sure there is only one .key file within config, deleting all but the one that matches your current license if there happens to be more than one in there
 ### 5. Copy the syslinux.cfg file from your backups syslinux folder and put into the syslinux folder on the flash drive and say yes if you get asked to overwrite
 > [!NOTE]
-> don't copy the entire syslinux folder, copy only the syslinux.cfg file that is within the syslinux folder
+> Don't copy the entire syslinux folder, copy only the syslinux.cfg file that is within the syslinux folder
 ### 6. If you have a folder named extra in your backup, copy it to the flash drive
 ### 7. All done, boot unraid with your recreated flash drive
 ### 8. ***only use this step if you switched to a different flash drive.***
-go to tools > registration and click replace key to do the license transfer process, you can look here for more info on that process at \
+Go to tools > registration and click replace key to do the license transfer process, you can look here for more info on that process at \
 https://docs.unraid.net/unraid-os/manual/changing-the-flash-device/
