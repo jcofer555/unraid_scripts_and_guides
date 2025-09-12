@@ -33,7 +33,7 @@ drive for the xml templates before starting like mentioned above
   > this will take some time to download your selected containers images, be patient until it finishes
 ## 7. wait for it to finish and you're done now with a fresh docker.img
 > [!NOTE]
-> BELOW IS THE THE USERSCRIPT DETAILS TO USE IF NEEDED, PUT EVERYTHING STARTING WITH `#!/bin/bash` IN THE SCRIPT AND THE RESULTS WILL DISPLAY IN THE SCRIPTS LOG \
+> below is the userscript details to use if needed, put everything starting with `#!/bin/bash` in the script and the results will display in the scripts log with the names of your custom docker networks \
 > this pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
 
 > [!IMPORTANT]
