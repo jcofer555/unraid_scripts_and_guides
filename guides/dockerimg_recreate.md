@@ -5,7 +5,7 @@ If checking the flash drive via windows then it would be just `/config/plugins/d
     - note: this process only works for containers that use templates, so if using compose or run manually then this isn't the guide for you
  
 1. make note of the names of any custom networks you created with docker network create
-    - note: if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with 
+	- note: if you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with 
     the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in
     - note: if you hadn't created any custom networks you can skip this step
     - optional: go to apps > previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
@@ -25,8 +25,8 @@ drive for the xml templates before starting like mentioned at the top!!
  
 BELOW IS THE THE USERSCRIPT DETAILS TO USE IF NEEDED, PUT EVERYTHING STARTING WITH `#!/bin/bash` IN THE SCRIPT AND THE RESULTS WILL DISPLAY IN THE 
 SCRIPTS LOG
-- note: when making a new script in userscripts plugin it will have the `#!/bin/bash` already, make sure you don't end up with it doubled at the top
-- note: this pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
+	- note: when making a new script in userscripts plugin it will have the `#!/bin/bash` already, make sure you don't end up with it doubled at the top
+	- note: this pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
  
 ```bash
 #!/bin/bash
