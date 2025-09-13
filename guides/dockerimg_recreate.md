@@ -11,7 +11,8 @@
  
 ## 1. Make note of the names of any custom networks you created with docker network create
   > [!NOTE]
-  > If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have. install the user scripts plugin from the apps page to make the script in \
+  > If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have \
+  > Install the user scripts plugin from the apps page to make the script in \
   > If you hadn't created any custom networks you can skip step 1
 
 ## 2. Go to Settings —> Docker and set Enable Docker to no to stop the Docker service and all containers
