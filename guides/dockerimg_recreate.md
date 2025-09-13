@@ -11,7 +11,7 @@
   > - If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have
   > - Install the user scripts plugin from the apps page to make the script in
   > - If you hadn't created any custom networks you can skip step 1
-## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
+## 2. Go to settings —> docker and set enable docker to no and hit apply to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
   > - Optional: change the vdisk size

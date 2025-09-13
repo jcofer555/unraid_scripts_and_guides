@@ -9,17 +9,17 @@
 
 > [!TIP]
 > - Have a monitor and keyboard hooked to the server for any troubleshooting that might come up
-### 1. **Go to the boot device section of the main tab and click on flash. Make a USB backup and test it to make sure it extracts correctly**
+### 1. Backup your current flash drive either in unraid with the flash backup button located by clicking flash in blue letters on the main page of unraids webui or by copying and pasting all files using another os like windows to your desktop or another folder
   > [!NOTE]
   > - If using unraid connect for USB backups, go to settings —> management access and make sure the backup is up to date
 ### 2. If it isn’t installed, install the fix common problems plugin as well as fully update all plugins that are installed
-### 3. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
+### 3. Go to settings —> docker and set enable docker to no and hit apply to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
-### 4. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no to stop the service
+### 4. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no and hit apply to stop the service
   > [!NOTE]
   > - Confirm vm manager is stopped by checking the status at the top right of the settings —> vm manager screen
-### 5. Go to settings —> disk settings and set enable auto start to no to prevent the array from auto-starting after the update
+### 5. Go to settings —> disk settings and set enable auto start to no and hit apply to prevent the array from auto-starting after the update
 ### 6. Close any open web terminal sessions, ssh sessions, and make sure local terminal (at the server with a monitor) is logged out, and exit the unraid webgui on any browsers/devices not being used to perform the update (on local or remote systems)
 ### 7. If you are using the user scripts plugin, or you run scripts manually make sure no scripts are running
 ### 8. Go to the main page on unraids webui and unmount any disks and any smb/nfs shares under the unassigned devices section
@@ -31,8 +31,11 @@
   > - Optional: go to settings —> global share settings and set permit exclusive shares to yes
   > - Read the context sensitive help by pressing f1 on the keyboard. Also see the unraid documentation for more info at https://docs.unraid.net/unraid-os/release-notes/6.12.0/#exclusive-shares
 ### 13. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
-### 14. Once the array has started and things look OK, re-enable docker and vm manager services and confirm that your containers and vm's operate as expected
-### 15. If you prefer array auto start, go to settings —> disk settings and set enable auto start back to yes so the array autostarts on boot
+### 14. Once the array has started and things look OKok, re-enable docker at settings —> docker enabled docker to yes and hit apply and vm manager services at settings —> vm manager and hit apply
+  > [!NOTE]
+  > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
+  > - Confirm vm manager is started by checking the status at the top right of the settings —> vm manager screen
+### 15. If you prefer your array to auto start, go to settings —> disk settings and set enable auto start back to yes and hit apply so the array autostarts on boot
   > [!NOTE]
   > - Many users prefer to leave auto start disabled so they can check their array and pool devices are all recognized properly after a shutdown/reboot
 ### 16. All done, enjoy the new version of unraid os
