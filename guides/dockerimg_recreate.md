@@ -7,7 +7,7 @@
 > You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
 
 > [!WARNING]
-> This process only works for containers that use templates, so if using compose or run manually then this isn't the guide for you
+> This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
  
 ## 1. Make note of the names of any custom networks you created with docker network create
   > [!NOTE]
