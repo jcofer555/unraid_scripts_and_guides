@@ -1,8 +1,8 @@
-# UPDATING UNRAID OS TO A NEW RELEASE: 
+# UPDATING UNRAID OS TO A NEW VERSION: 
 
 > [!IMPORTANT]
 > read the release notes and these instructions before attempting the upgrade. If you have any questions, please ask in the #unraid-stable channel of the unraid official discord server which can be joined at https://discord.unraid.net \
-> You can use this procedure for testing releases (the ’Next’ branch) as well, but make sure to read the release notes for it and all previous testing versions.
+> You can use this procedure for testing versions (the ’Next’ branch) as well, but make sure to read the release notes for it and all previous testing versions
 
 > [!IMPORTANT]
 > **DO NOT SKIP STEP 1**
@@ -37,7 +37,7 @@
 ### 15. If you prefer array auto start, go to settings —> disk settings and set enable auto start back to yes so the array autostarts on boot
   > [!NOTE]
   > Many users prefer to leave auto start disabled so they can check their array and pool devices are all recognized properly after a shutdown/reboot
-### 16. All done, enjoy the new version unraid os
+### 16. All done, enjoy the new version of unraid os
   > [!WARNING]
   > Some plugins have issues going from one version to the next, happens more often with big version jumps. Known ones that i'm aware of is folderview, mover tuning, and themepark \
   > If you use these plugins and have problems with the system after updating you might need to remove them and look for new versions of them
