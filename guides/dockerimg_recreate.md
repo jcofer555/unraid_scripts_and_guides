@@ -1,47 +1,47 @@
 # STEPS TO RECREATE YOUR DOCKER.IMG:
 > [!IMPORTANT] 
->  - Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files. \
->  - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
+> - Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
+> - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
 
 > [!IMPORTANT]
-> You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
+> - You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
 
 > [!WARNING]
-> This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
+> - This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
  
 ## 1. Make note of the names of any custom networks you created with docker network create
   > [!NOTE]
-  > If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have \
-  > Install the user scripts plugin from the apps page to make the script in \
-  > If you hadn't created any custom networks you can skip step 1
+  > - If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have
+  > - Install the user scripts plugin from the apps page to make the script in
+  > - If you hadn't created any custom networks you can skip step 1
 
 ## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
-  > Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
+  > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
 
   > [!TIP]
-  > Optional: backup the docker.img file using a file manager or via terminal (check path at settings —> docker > docker vvisk location) \
-  > Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
+  > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vvisk location
+  > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
 
   > [!NOTE]
-  > Optional: change the vdisk size
+  > - Optional: change the vdisk size
 ## 3. in settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
 ## 4. in settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
-  > Confirm docker is started by checking the status at the top right of the settings —> docker screen
+  > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
 ## 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
   > [!NOTE]
-  > If you hadn't created any custom networks you can skip step 5
+  > - If you hadn't created any custom networks you can skip step 5
 ## 6. go to apps, then previous apps and select all or select the ones you want and hit install
   > [!NOTE]
-  > This will take some time to download your selected containers images, be patient until it finishes
+  > - This will take some time to download your selected containers images, be patient until it finishes
 ## 7. wait for it to finish and you're done now with a fresh docker.img
   > [!NOTE]
-  > Below is the userscript details to use if needed, put everything starting with `#!/bin/bash` in the script and the results will display in the scripts log with the names of your custom docker networks \
-  > This pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
+  > - Below is the userscript details to use if needed, put everything starting with `#!/bin/bash` in the script and the results will display in the scripts log with the names of your custom docker networks
+  > - This pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
 
 > [!IMPORTANT]
-> When making a new script in userscripts plugin it will have the `#!/bin/bash` already, make sure you don't end up with it doubled at the top
+> - When making a new script in userscripts plugin it will have the `#!/bin/bash` already, make sure you don't end up with it doubled at the top
  
 ```bash
 #!/bin/bash
