@@ -1,5 +1,23 @@
 ```bash
 #!/bin/bash
+
+# Variables
+
+# Backup destination directory
+backup_location="/mnt/user/data/computer/backups/unraid_vms"
+
+# List of VMs to back up (newline-separated)
+vms_to_backup="
+vm1
+vm2
+vm3
+"
+
+# Owner and group for backup files
+backup_owner="jcofer555"
+
+        #### DON'T CHANGE ANYTHING BELOW HERE
+
 backgroundOnly=false
 arrayStarted=true
 noParity=false
@@ -27,18 +45,9 @@ me=$(basename "$0")
 # default 0 but set the master switch to 1 if you want to enable the script otherwise it will not run.
 enabled="1"
 
-# backup location to put vdisks.
-backup_location="/mnt/user/data/computer/backups/unraid_vms/"
-
 # default is 0. backup all vms or use vms_to_backup.
 # when set to 1, vms_to_backup will be used as an exclusion list.
 backup_all_vms="0"
-
-# list of vms that will be backed up separated by a new line.
-# if backup_all_vms is set to 1, this will be used as a list of vms to exclude instead.
-vms_to_backup="
-mdt
-"
 
 # list of specific vdisks to be skipped separated by a new line. use the full path.
 # NOTE: must match path in vm config file. remember this if you change the virtual disk path to enable snapshots.
@@ -2930,8 +2939,8 @@ only_send_error_notifications="0"
 
   fi
 
-echo "changing owner to jcofer555"
-chown -R jcofer555:users "/mnt/user/data/computer/backups/unraid_vms"
+echo "changing owner to $backup_owner"
+chown -R "$backup_owner:users" "/mnt/user/data/computer/backups/unraid_vms"
 
   exit 0
 
