@@ -6,7 +6,7 @@
 # Change this to the port you want to search
 PORT_TO_SEARCH="67"
 
-# DON'T CHANGE ANYTHING BELOW
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Check Unraid WebUI ports
 UNRAID_HTTP_PORT=$(grep -E "PORT=" /boot/config/ident.cfg | sed -E 's/[^0-9]//g')

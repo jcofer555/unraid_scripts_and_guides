@@ -3,7 +3,7 @@
 # Variables
 OUTPUT_FILE="/mnt/user/appdata/docker_paths.log"
     
-    #### Don't change anything below here ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 {
     echo "=== Docker Container Path Assignments (Running) ==="

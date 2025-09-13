@@ -5,7 +5,7 @@
 BACKUP_LOCATION="/mnt/user/data/computer/backups/unraid_flash/"     # make sure to keep the / at the end of the path
 MAX_BACKUPS=7  # Number of backups to keep
 
-    #### DON'T CHANGE ANYTHING BELOW HERE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Run the backup
 backup_file="${BACKUP_LOCATION}flash_$(date +"%m-%d-%Y").tar.gz"

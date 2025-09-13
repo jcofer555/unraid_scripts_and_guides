@@ -13,7 +13,7 @@ UNRAID_OWNER="jcofer555"
 UNRAID_GROUP="users"
 NUM_BACKUPS=15  # Number of backups to retrieve and keep
 
-	#### DON'T CHANGE ANYTHING BELOW ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Remove old backups
 echo "Removing all files in $UNRAID_PATH"

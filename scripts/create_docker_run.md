@@ -4,7 +4,7 @@
 # Define the container name you want to create a docker run from
 CONTAINER_NAME="Krusader"
 
-# DON'T CHANGE ANYTHING BELOW
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Check if the container exists
 if ! docker ps -a --format '{{.Names}}' | grep -q "^$CONTAINER_NAME$"; then

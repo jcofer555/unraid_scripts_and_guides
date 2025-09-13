@@ -7,7 +7,7 @@ DISK_TREE_PATH="/mnt/user/data/diskstree"
 SHARES_TO_SCAN=(data mymedia)
 DISKS_TO_SCAN=(disk1 disk2 disk3)
 
-    #### DON'T CHANGE ANYTHING BELOW HERE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 echo "****Starting scan for shares****"
 echo

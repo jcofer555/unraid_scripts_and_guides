@@ -13,7 +13,7 @@ DAYS_FROM"0"	# the amount of days you want to target for the pause from the tras
 DAYS_TO"2"
 export QBIT_PASSWORD="YOUR_PASSWORD"
 
-	#### DON'T CHANGE ANYTHING BELOW HERE UNLESS NEEDING TO ADD EXTRA STOP/STARTS OF CONTAINERS ####
+	    #### DON'T CHANGE ANYTHING BELOW HERE UNLESS NEEDING TO ADD EXTRA STOP/STARTS OF CONTAINERS ####
 
 # Mover check
 echo "Checking if mover is already running"

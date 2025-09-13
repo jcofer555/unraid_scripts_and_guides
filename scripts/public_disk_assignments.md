@@ -5,7 +5,7 @@
 OUTPUT_FILE="/mnt/user/backups/disk_assignments.txt"
 SKIP_DRIVES=("parity" "parity2")
 
-    #### DON'T CHANGE ANYTHING BELOW HERE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Checking if disks.ini exists
 echo "Checking if disks.ini exists"

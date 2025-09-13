@@ -4,7 +4,7 @@
 # Set the target directory to the path you want to work on.
 TARGET_DIR="/mnt/user/sharename/test"
 
-# DON'T CHANGE ANYTHING BELOW
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Change to the target directory and exit if it fails.
 cd "$TARGET_DIR" || { echo "Error: Could not change directory to $TARGET_DIR exiting without doing anything"; exit 1; }

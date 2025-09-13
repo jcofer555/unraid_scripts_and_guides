@@ -8,7 +8,7 @@ ALLOW_UPGRADE=true                            # Set to false to prevent upgrades
 FORCE_REINSTALL=false                         # Set to true to reinstall regardless of the above settings # To upgrade both ALLOW_INSTALL and ALLOW_UPGRADE need to be true
 DRY_RUN=false                                 # Set to true to simulate actions without making changes
 
-        ### DON'T CHANGE ANYTHING BELOW HERE ###
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # === CONFIG SUMMARY ===
 echo

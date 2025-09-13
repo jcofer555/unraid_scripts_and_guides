@@ -6,7 +6,7 @@ QBITTORRENT_CONTAINER_NAME="qbittorrent"
 VPN_CONTAINER_NAME="base"
 CONF_PATH="/mnt/user/appdata/qbittorrent/config/qBittorrent.conf"
 
-# DON'T CHANGE ANYTHING BELOW
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 # Extract forwarded port
 FORWARDED_PORT=$(docker logs "$VPN_CONTAINER_NAME" 2>/dev/null | awk '/Forwarded port/ {gsub(/[^0-9]/, "", $NF); print $NF}' | tail -n 1)
