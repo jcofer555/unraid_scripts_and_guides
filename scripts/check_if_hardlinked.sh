@@ -7,6 +7,8 @@ SEARCH_DIR="/mnt/user/mymedia"
 LOG_HARDLINKED="/mnt/user/data/files_that_are_hardlinked.log"
 LOG_NOT_HARDLINKED="/mnt/user/data/files_not_hardlinked.log"
 
+    #### DON'T CHANGE ANYTHING BELOW HERE ####
+
 # Clear previous logs
 echo "Scanning for hardlinked files in $SEARCH_DIR..." > "$LOG_HARDLINKED"
 echo "Scanning for non-hardlinked files in $SEARCH_DIR..." > "$LOG_NOT_HARDLINKED"
