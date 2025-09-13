@@ -4,7 +4,7 @@
 > **DO NOT SKIP STEP 1**
 
 ### 1. Backup your current flash drive either in unraid with the flash backup button located by clicking flash in blue letters on the main page of unraids webui or by copying and pasting all files using another OS like windows to your desktop or another folder
-### 2. If your flash drive was having errors then I'd suggest doing a full format not a quick format using windows or another OS, if no errors then continue, if errors it might be worth changing to a new flash drive.
+### 2. If your flash drive was having errors then I'd suggest doing a full format not a quick format using windows or another os, if no errors then continue, if errors it might be worth changing to a new flash drive.
 ### 3. Download and install the usb creator at https://unraid.net/download, then use the creator to create your flash drive fresh with the version of unraid you wish to be on 
 > [!TIP]
 > Sometimes it's worth picking the same version you were on prior \
@@ -22,5 +22,5 @@ https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
 ### 6. If you have a folder named extra in your backup, copy it to the flash drive
 ### 7. All done, boot unraid with your recreated flash drive
 ### 8. ***only use this step if you switched to a different flash drive.***
-Go to tools > registration and click replace key to do the license transfer process, you can look here for more info on that process at \
+Go to tools —> registration and click replace key to do the license transfer process, you can look here for more info on that process at \
 https://docs.unraid.net/unraid-os/manual/changing-the-flash-device/

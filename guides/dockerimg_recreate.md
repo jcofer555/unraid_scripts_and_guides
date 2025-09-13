@@ -17,18 +17,18 @@
 
 ## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
-  > Confirm docker is stopped by checking the status at the top right of the settings > docker screen
+  > Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
 
   > [!TIP]
-  > Optional: backup the docker.img file using a file manager or via terminal (check path at settings > docker > docker vvisk location) \
-  > Optional: go to apps > previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
+  > Optional: backup the docker.img file using a file manager or via terminal (check path at settings —> docker > docker vvisk location) \
+  > Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
 
   > [!NOTE]
   > Optional: change the vdisk size
-## 3. in settings > docker put a check in the delete vdisk file box and hit delete at the bottom
-## 4. in settings > docker change enable docker to yes and hit apply
+## 3. in settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
+## 4. in settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
-  > Confirm docker is started by checking the status at the top right of the settings > docker screen
+  > Confirm docker is started by checking the status at the top right of the settings —> docker screen
 ## 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
   > [!NOTE]
   > If you hadn't created any custom networks you can skip step 5

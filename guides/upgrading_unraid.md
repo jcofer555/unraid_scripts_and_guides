@@ -16,12 +16,12 @@
 ### 2. If it isn’t installed, install the fix common problems plugin as well as fully update all plugins that are installed
 ### 3. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
-  > Confirm docker is stopped by checking the status at the top right of the settings > docker screen
+  > Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
 ### 4. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no to stop the service
   > [!NOTE]
-  > Confirm vm manager is stopped by checking the status at the top right of the settings > vm manager screen
-### 5. Go to settings > disk settings and set enable auto start to no to prevent the array from auto-starting after the update
-### 6. Close any open web terminal sessions, ssh sessions, and make sure local terminal (at the server with a monitor) is logged out, and exit the unRAID webgui on any browsers/devices not being used to perform the update (on local or remote systems)
+  > Confirm vm manager is stopped by checking the status at the top right of the settings —> vm manager screen
+### 5. Go to settings —> disk settings and set enable auto start to no to prevent the array from auto-starting after the update
+### 6. Close any open web terminal sessions, ssh sessions, and make sure local terminal (at the server with a monitor) is logged out, and exit the unraid webgui on any browsers/devices not being used to perform the update (on local or remote systems)
 ### 7. If you are using the user scripts plugin, or you run scripts manually make sure no scripts are running
 ### 8. Go to the main page on unraids webui and unmount any disks and any smb/nfs shares under the unassigned devices section
 ### 9. Stop the array from the array operations section at the bottom of the main page of the unraids webui. Confirm it says array stopped in the bottom taskbar
