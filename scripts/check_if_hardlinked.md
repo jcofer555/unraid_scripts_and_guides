@@ -16,42 +16,47 @@ DRY_RUN="yes"
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
 
-echo "=== Starting scan for non-hardlinked files in $SEARCH_DIR ==="
+scan_and_hardlink_appdata() {
+    echo "=== Starting scan for non-hardlinked files in $SEARCH_DIR ===" | tee -a "$log_file"
 
-# Clear previous logs
-echo "Scanning for non-hardlinked files in $SEARCH_DIR..." > "$LOG_NOT_HARDLINKED"
-echo "=== jdupes results ===" > "$JDUPE_LOG"
+    echo "Scanning for non-hardlinked files in $SEARCH_DIR..." > "$LOG_NOT_HARDLINKED"
+    echo "=== jdupes results ===" > "$JDUPE_LOG"
 
-# Find all regular files (skip hidden and system metadata files)
-ALL_FILES=$(find "$SEARCH_DIR" -type f \
-    ! -path '*/.*' \
-    ! -iname '.ds_store' \
-    ! -iname 'thumbs.db')
+    ALL_FILES=$(find "$SEARCH_DIR" -type f \
+        ! -path '*/.*' \
+        ! -iname '.ds_store' \
+        ! -iname 'thumbs.db')
 
-# Classify files by hardlink status
-while IFS= read -r file; do
-    link_count=$(stat --format="%h" "$file")
-    if [ "$link_count" -eq 1 ]; then
-        echo "$file" >> "$LOG_NOT_HARDLINKED"
-    fi
-done <<< "$ALL_FILES"
+    while IFS= read -r file; do
+        link_count=$(stat --format="%h" "$file")
+        if [ "$link_count" -eq 1 ]; then
+            echo "$file" >> "$LOG_NOT_HARDLINKED"
+        fi
+    done <<< "$ALL_FILES"
 
-echo "Scan complete."
-echo "Non-hardlinked files saved to: $LOG_NOT_HARDLINKED"
-echo
+    echo "Scan complete."
+    echo "Non-hardlinked files saved to: $LOG_NOT_HARDLINKED"
+    echo
 
-# Run jdupes if not skipped and installed
-if [ "$SKIP_JDUPES" != "yes" ] && command -v jdupes >/dev/null 2>&1; then
-    if [ "$DRY_RUN" = "yes" ]; then
-        echo "DRY RUN: Showing potential hardlinks without making changes..."
-        jdupes -r --no-hidden --files-from "$LOG_NOT_HARDLINKED" | tee -a "$JDUPE_LOG"
+    if [ "$SKIP_JDUPES" != "yes" ] && command -v jdupes >/dev/null 2>&1; then
+        if [ "$DRY_RUN" = "yes" ]; then
+            echo "DRY RUN: Showing potential hardlinks without making changes..."
+            if xargs -a "$LOG_NOT_HARDLINKED" jdupes -r --no-hidden | tee -a "$JDUPE_LOG"; then
+                echo "Dry run completed successfully."
+            else
+                log_error "jdupes dry run failed"
+            fi
+        else
+            echo "Running jdupes to deduplicate and hardlink files..."
+            if xargs -a "$LOG_NOT_HARDLINKED" jdupes -r -L --no-hidden | tee -a "$JDUPE_LOG"; then
+                echo "jdupes deduplication complete. Log saved to: $JDUPE_LOG"
+            else
+                log_error "jdupes hardlinking failed"
+            fi
+        fi
     else
-        echo "Running jdupes to deduplicate and hardlink files..."
-        jdupes -r -L --no-hidden --files-from "$LOG_NOT_HARDLINKED" | tee -a "$JDUPE_LOG"
-        echo "jdupes deduplication complete. Log saved to: $JDUPE_LOG"
+        echo "Skipping jdupes hardlinking step."
     fi
-else
-    echo "Skipping jdupes hardlinking step."
-fi
+}
 
 ```
