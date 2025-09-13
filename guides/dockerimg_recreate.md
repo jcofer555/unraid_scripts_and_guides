@@ -2,9 +2,8 @@
 > [!IMPORTANT] 
 > - Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
 > - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
-
-> [!IMPORTANT]
 > - You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
+
 
 > [!WARNING]
 > - This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
@@ -18,13 +17,12 @@
 ## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
+  > - Optional: change the vdisk size
 
   > [!TIP]
   > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vvisk location
   > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
-
-  > [!NOTE]
-  > - Optional: change the vdisk size
+ 
 ## 3. in settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
 ## 4. in settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
