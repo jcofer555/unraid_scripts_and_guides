@@ -8,8 +8,7 @@
 ### 3. Download and install the usb creator at https://unraid.net/download, then use the creator to create your flash drive fresh with the version of unraid you wish to be on 
 > [!TIP]
 > - Sometimes it's worth picking the same version you were on prior
-> - If the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at
-https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
+> - If the creator fails to work you can try using the manual method to create the flash drive for this step, instructions at https://docs.unraid.net/unraid-os/getting-started/manual-install-method/
 
 > [!NOTE]
 > - You can determine what version you were on prior by opening changes.txt file at the root of the flash drive backup you made in step 1
