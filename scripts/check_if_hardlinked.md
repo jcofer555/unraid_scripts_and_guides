@@ -8,10 +8,13 @@ SEARCH_DIR="/mnt/user/mymedia"
 LOG_NOT_HARDLINKED="/mnt/user/data/files_not_hardlinked.log"
 JDUPE_LOG="/mnt/user/data/jdupes_hardlinking.log"
 
+# Skip jdupes even if installed? set to "yes" or "no"
+SKIP_JDUPES="no"
+
 # Dry run variable: set to "yes" to preview only, "no" to perform hardlinking
 DRY_RUN="yes"
 
-#### DON'T CHANGE ANYTHING BELOW HERE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE ####
 
 echo "=== Starting scan for non-hardlinked files in $SEARCH_DIR ==="
 
@@ -37,8 +40,8 @@ echo "Scan complete."
 echo "Non-hardlinked files saved to: $LOG_NOT_HARDLINKED"
 echo
 
-# Run jdupes if installed
-if command -v jdupes >/dev/null 2>&1; then
+# Run jdupes if not skipped and installed
+if [ "$SKIP_JDUPES" != "yes" ] && command -v jdupes >/dev/null 2>&1; then
     if [ "$DRY_RUN" = "yes" ]; then
         echo "DRY RUN: Showing potential hardlinks without making changes..."
         jdupes -r --no-hidden --files-from "$LOG_NOT_HARDLINKED" | tee -a "$JDUPE_LOG"
@@ -48,5 +51,6 @@ if command -v jdupes >/dev/null 2>&1; then
         echo "jdupes deduplication complete. Log saved to: $JDUPE_LOG"
     fi
 else
-    echo "WARNING: jdupes not installed. Skipping hardlinking step."
-fi```
+    echo "Skipping jdupes hardlinking step."
+fi
+```
