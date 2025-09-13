@@ -4,16 +4,13 @@
 > - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
 > - You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
 
-
 > [!WARNING]
 > - This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
- 
 ## 1. Make note of the names of any custom networks you created with docker network create
   > [!NOTE]
   > - If you cannot start docker to confirm the names of the custom networks you used and you can't remember them then you can make a userscript with the code shown at the bottom to output the names of any custom networks you have
   > - Install the user scripts plugin from the apps page to make the script in
   > - If you hadn't created any custom networks you can skip step 1
-
 ## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
@@ -22,7 +19,6 @@
   > [!TIP]
   > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vvisk location
   > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
- 
 ## 3. Go to settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
 ## 4. Go to settings —> docker change enable docker to yes and hit apply
   > [!NOTE]

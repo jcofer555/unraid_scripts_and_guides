@@ -9,7 +9,6 @@
 
 > [!TIP]
 > - Have a monitor and keyboard hooked to the server for any troubleshooting that might come up
-
 ### 1. **Go to the boot device section of the main tab and click on flash. Make a USB backup and test it to make sure it extracts correctly**
   > [!NOTE]
   > - If using unraid connect for USB backups, go to settings —> management access and make sure the backup is up to date
