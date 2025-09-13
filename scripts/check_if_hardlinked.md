@@ -17,6 +17,20 @@ if [[ "$INSTALL_JDUPES_PACKAGES" != "yes" && "$INSTALL_JDUPES_PACKAGES" != "no" 
     exit 1
 fi
 
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$SKIP_DUPES" != "yes" && "$SKIP_JDUPES" != "no" ]]; then
+    echo "❌ Invalid value for SKIP_JDUPES: $SKIP_JDUPES"
+    echo "Please set it to 'yes' or 'no'"
+    exit 1
+fi
+
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$DRY_RUN" != "yes" && "$DRY_RUN" != "no" ]]; then
+    echo "❌ Invalid value for DRY_RUN: $DRY_RUN"
+    echo "Please set it to 'yes' or 'no'"
+    exit 1
+fi
+
 echo
 echo "=== Starting scan for non-hardlinked files in $SEARCH_DIR ==="
 [ "$DRY_RUN" = "yes" ] && echo "🧪 DRY RUN ENABLED: No scanning, logging, or file operations will occur."
