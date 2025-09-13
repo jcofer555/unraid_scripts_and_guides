@@ -1,5 +1,6 @@
 ```bash
 #!/bin/bash
+
 # Variables
 OUTPUT_FILE="/mnt/user/appdata/docker_paths.log"
     

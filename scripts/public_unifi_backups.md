@@ -14,6 +14,13 @@ UNRAID_GROUP="users"
 NUM_BACKUPS=15  # Number of backups to retrieve and keep
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$NUM_BACKUPS" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for NUM_BACKUPS: '$NUM_BACKUPS"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi        
 
 # Remove old backups
 echo "Removing all files in $UNRAID_PATH"

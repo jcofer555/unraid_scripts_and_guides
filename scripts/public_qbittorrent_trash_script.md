@@ -14,6 +14,20 @@ DAYS_TO"2"
 export QBIT_PASSWORD="YOUR_PASSWORD"
 
 	    #### DON'T CHANGE ANYTHING BELOW HERE UNLESS NEEDING TO ADD EXTRA STOP/STARTS OF CONTAINERS ####
+	    
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$DAYS_FROM" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for DAYS_FROM: '$DAYS_FROM"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi	    
+
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$DAYS_TO" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for DAYS_TO: '$DAYS_TO"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi
 
 # Mover check
 echo "Checking if mover is already running"

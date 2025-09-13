@@ -7,6 +7,20 @@ THRESHOLD=5           # Threshold %
 DRY_RUN="no"           # Set to "yes" to simulate without running mover
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$DRY_RUN" != "yes" && "$DRY_RUN" != "no" ]]; then
+    echo "❌ Invalid value for DRY_RUN: $DRY_RUN"
+    echo "Please set it to 'yes' or 'no'"
+    exit 1
+fi
+
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$THRESHOLD" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for THRESHOLD: '$THRESHOLD"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi
 
 MOUNT_POINT="/mnt/${POOL_NAME}"
 

@@ -7,6 +7,13 @@
 PORT_TO_SEARCH="67"
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$PORT_TO_SEARCH" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for SOME_VAR: '$SPORT_TO_SEARCH"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi
 
 # Check Unraid WebUI ports
 UNRAID_HTTP_PORT=$(grep -E "PORT=" /boot/config/ident.cfg | sed -E 's/[^0-9]//g')

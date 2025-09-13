@@ -6,6 +6,13 @@ BACKUP_LOCATION="/mnt/user/data/computer/backups/unraid_flash/"     # make sure 
 MAX_BACKUPS=7  # Number of backups to keep
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+# === VALIDATE NUMERIC VARIABLE ===
+if ! [[ "$MAX_BACKUPS" =~ ^[0-9]+$ ]]; then
+    echo "❌ Invalid value for MAX_BACKUPS: '$MAX_BACKUPS"
+    echo "Please enter a numeric value (digits only)"
+    exit 1
+fi        
 
 # Run the backup
 backup_file="${BACKUP_LOCATION}flash_$(date +"%m-%d-%Y").tar.gz"

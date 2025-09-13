@@ -9,6 +9,34 @@ FORCE_REINSTALL=false                         # Set to true to reinstall regardl
 DRY_RUN=false                                 # Set to true to simulate actions without making changes
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$DRY_RUN" != "true" && "$DRY_RUN" != "false" ]]; then
+    echo "❌ Invalid value for DRY_RUN: $DRY_RUN"
+    echo "Please set it to 'true' or 'false'"
+    exit 1
+fi
+
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$FORCE_REINSTALL" != "true" && "$FORCE_REINSTALL" != "false" ]]; then
+    echo "❌ Invalid value for FORCE_REINSTALL: $FORCE_REINSTALL"
+    echo "Please set it to 'true' or 'false'"
+    exit 1
+fi
+
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$ALLOW_UPGRADE" != "true" && "$ALLOW_UPGRADE" != "false" ]]; then
+    echo "❌ Invalid value for ALLOW_UPGRADE: $ALLOW_UPGRADE"
+    echo "Please set it to 'true' or 'false'"
+    exit 1
+fi
+
+# === VALIDATE INSTALL VARIABLE ===
+if [[ "$ALLOW_INSTALL" != "true" && "$ALLOW_INSTALL" != "false" ]]; then
+    echo "❌ Invalid value for ALLOW_INSTALL: $ALLOW_INSTALL"
+    echo "Please set it to 'true' or 'false'"
+    exit 1
+fi
 
 # === CONFIG SUMMARY ===
 echo
