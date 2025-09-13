@@ -196,4 +196,5 @@ pkg_check="ldconfig -p | grep -q libmd.so.0"
 slack_pkg_id="libmd"
 display_name="Libmd"
 
-manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"```
+manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"
+```

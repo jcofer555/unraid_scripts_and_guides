@@ -18,4 +18,5 @@ OUTPUT_FILE="/mnt/user/appdata/docker_paths.log"
 } > "$OUTPUT_FILE"
 
 echo "Saved results to: $OUTPUT_FILE"
+
 ```

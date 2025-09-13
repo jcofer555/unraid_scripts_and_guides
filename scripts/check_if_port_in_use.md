@@ -44,4 +44,5 @@ elif [[ -z "$RESULT" ]]; then
 # Check matches a container    
 else
     echo "$RESULT container has port $PORT_TO_SEARCH in use."
-fi```
+fi
+```

@@ -57,4 +57,5 @@ process_dirs "$TVSHOWSDIR1" "$TVSHOWSDIR2" "$OUTPUT1"
 
 # Movies variables
 process_dirs "$MOVIESDIR1" "$MOVIESDIR2" "$MOVIESDIR3" "$MOVIESDIR4" "$OUTPUT2"
+
 ```

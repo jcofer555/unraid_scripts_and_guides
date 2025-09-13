@@ -142,4 +142,5 @@ echo -e "\nA message saying \"error writing ... no space left\" is expected, NOT
 echo -e "Unless errors appeared, the drive is now cleared!"
 echo -e "Because the drive is now unmountable, the array should be stopped,"
 echo -e "and the drive removed (or reformatted)."
-exit```
+exit
+```

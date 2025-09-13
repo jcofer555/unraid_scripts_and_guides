@@ -28,4 +28,5 @@ for file in *; do
     mv -f "$file" "$base/"
 done
 
-echo "Script is done running"```
+echo "Script is done running"
+```
