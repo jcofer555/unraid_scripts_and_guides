@@ -23,17 +23,17 @@
   > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vvisk location
   > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
  
-## 3. in settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
-## 4. in settings —> docker change enable docker to yes and hit apply
+## 3. Go to settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
+## 4. Go to settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
   > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
-## 5. create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If correct you will see a string of characters as output
+## 5. Create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If done correctly you will see a string of characters as output
   > [!NOTE]
   > - If you hadn't created any custom networks you can skip step 5
-## 6. go to apps, then previous apps and select all or select the ones you want and hit install
+## 6. Go to apps —> previous apps and select all or select the ones you want and hit install
   > [!NOTE]
   > - This will take some time to download your selected containers images, be patient until it finishes
-## 7. wait for it to finish and you're done now with a fresh docker.img
+## 7. Wait for it to finish and you're done now with a fresh docker.img
   > [!NOTE]
   > - Below is the userscript details to use if needed, put everything starting with `#!/bin/bash` in the script and the results will display in the scripts log with the names of your custom docker networks
   > - This pulls info from your templates on your flash drive so if you have old templates for things you don't run anymore those custom networks will show as well but it won't hurt anything to create them also
