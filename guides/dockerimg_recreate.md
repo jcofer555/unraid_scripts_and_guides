@@ -15,12 +15,12 @@
   > Install the user scripts plugin from the apps page to make the script in \
   > If you hadn't created any custom networks you can skip step 1
 
-## 2. Go to Settings —> Docker and set Enable Docker to no to stop the Docker service and all containers
+## 2. Go to settings —> docker and set enable docker to no to stop the docker service and all containers
   > [!NOTE]
   > Confirm docker is stopped by checking the status at the top right of the settings > docker screen
 
   > [!TIP]
-  > Optional: backup the docker.img file using a file manager or via terminal (check path at settings > docker > Docker vDisk location) \
+  > Optional: backup the docker.img file using a file manager or via terminal (check path at settings > docker > docker vvisk location) \
   > Optional: go to apps > previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
 
   > [!NOTE]
