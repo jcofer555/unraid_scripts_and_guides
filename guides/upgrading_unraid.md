@@ -1,7 +1,7 @@
 # UPDATING UNRAID OS TO A NEW RELEASE: 
 
 > [!IMPORTANT]
-> read the release notes and these instructions before attempting the upgrade. If you have any questions, please ask in the #unraid-stable channel of the unraid official discord server which can be joined at this url <a href="https://discord.unraid.net" target="_blank" rel="noopener noreferrer">https://discord.unraid.net</a> \
+> read the release notes and these instructions before attempting the upgrade. If you have any questions, please ask in the #unraid-stable channel of the unraid official discord server which can be joined at https://discord.unraid.net \
 > You can use this procedure for testing releases (the ’Next’ branch) as well, but make sure to read the release notes for it and all previous testing versions.
 
 > [!IMPORTANT]
