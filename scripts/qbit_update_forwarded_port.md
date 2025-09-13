@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # CHANGE THESE
@@ -41,4 +42,4 @@ echo "qbittorrent.conf session port updated to port $FORWARDED_PORT"
 # Start qBittorrent
 docker start "$QBITTORRENT_CONTAINER_NAME" > /dev/null 2>&1
 echo "$QBITTORRENT_CONTAINER_NAME started"
-echo "Script finished..."
+echo "Script finished..."```

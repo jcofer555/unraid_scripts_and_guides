@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Variables
@@ -74,4 +75,4 @@ done < "/var/local/emhttp/disks.ini" || {
     echo "Failed to parse /var/local/emhttp/disks.ini during creation phase, Ensure the file exists and is formatted correctly"
 }
 
-echo "Script is finished and disk assignments created at $OUTPUT_FILE"
+echo "Script is finished and disk assignments created at $OUTPUT_FILE"```

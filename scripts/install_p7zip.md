@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # === CONFIGURATION ===
@@ -168,31 +169,16 @@ manage_package() {
     fi
 }
 
-# === NETCAT ===
-pkg_name="$(get_latest_github_pkg_name "netcat-openbsd-")"
+# === P7ZIP ===
+pkg_name="$(get_latest_github_pkg_name "p7zip-")"
 if [ -z "$pkg_name" ]; then
-    echo "❌ Could not find netcat-openbsd package"
+    echo
+    echo "❌ Could not find p7zip package"
     exit 1
 fi
 pkg_url="https://github.com/jcofer555/unraid_packages/raw/refs/heads/main/$pkg_name"
-pkg_check="ls /var/log/packages | grep -q '^netcat-openbsd-'"
-slack_pkg_id="netcat-openbsd"
-display_name="Netcat-openbsd"
+pkg_check="ls /var/log/packages | grep -q '^p7zip-'"
+slack_pkg_id="p7zip"
+display_name="P7zip"
 
-manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name" || {
-    echo "❌ Aborting: netcat-openbsd failed. libmd will not be processed."
-    exit 1
-}
-
-# === LIBMD ===
-pkg_name="$(get_latest_github_pkg_name "libmd-")"
-if [ -z "$pkg_name" ]; then
-    echo "❌ Could not find libmd package"
-    exit 1
-fi
-pkg_url="https://github.com/jcofer555/unraid_packages/raw/refs/heads/main/$pkg_name"
-pkg_check="ldconfig -p | grep -q libmd.so.0"
-slack_pkg_id="libmd"
-display_name="Libmd"
-
-manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"
+manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"```

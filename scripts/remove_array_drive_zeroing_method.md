@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # A script to clear an unRAID array drive.  It first checks the drive is completely empty,
 # except for a marker indicating that the user desires to clear the drive.  The marker is
@@ -141,4 +142,4 @@ echo -e "\nA message saying \"error writing ... no space left\" is expected, NOT
 echo -e "Unless errors appeared, the drive is now cleared!"
 echo -e "Because the drive is now unmountable, the array should be stopped,"
 echo -e "and the drive removed (or reformatted)."
-exit
+exit```

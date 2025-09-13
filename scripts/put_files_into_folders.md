@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Set the target directory to the path you want to work on.
@@ -27,4 +28,4 @@ for file in *; do
     mv -f "$file" "$base/"
 done
 
-echo "Script is done running"
+echo "Script is done running"```

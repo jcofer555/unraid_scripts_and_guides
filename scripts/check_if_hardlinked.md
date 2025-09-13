@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Directory to scan
@@ -29,4 +30,4 @@ done <<< "$ALL_FILES"
 
 echo "Scan complete."
 echo "Hardlinked files saved to: $LOG_HARDLINKED"
-echo "Non-hardlinked files saved to: $LOG_NOT_HARDLINKED"
+echo "Non-hardlinked files saved to: $LOG_NOT_HARDLINKED"```

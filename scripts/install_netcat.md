@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # === CONFIGURATION ===
@@ -26,7 +27,7 @@ fi
 # === FUNCTION TO FETCH LATEST PACKAGE FROM GITHUB ===
 get_latest_github_pkg_name() {
     local prefix="$1"
-    local suffix=".tgz"
+    local suffix=".txz"
     local api_url="https://api.github.com/repos/jcofer555/unraid_packages/contents/?ref=main"
 
     curl -s "$api_url" | jq -r \
@@ -42,7 +43,7 @@ manage_package() {
     local slack_pkg_name="$4"
     local display_name="$5"
     local pkg_path="/boot/extra/$pkg_name"
-    local new_version=$(echo "$pkg_name" | sed "s/^$slack_pkg_name-//" | sed 's/\.tgz//')
+    local new_version=$(echo "$pkg_name" | sed "s/^$slack_pkg_name-//" | sed 's/\.txz//')
 
     echo
     echo "### $display_name ###"
@@ -104,7 +105,7 @@ manage_package() {
     fi
 
     if [ "$is_installed" = true ]; then
-        local installed_version=$(ls /var/log/packages | grep "^$slack_pkg_name-" | sed "s/^$slack_pkg_name-//" | sed 's/\.tgz//')
+        local installed_version=$(ls /var/log/packages | grep "^$slack_pkg_name-" | sed "s/^$slack_pkg_name-//" | sed 's/\.txz//')
         echo "Installed version: $installed_version"
         echo "Available version: $new_version"
 
@@ -168,34 +169,31 @@ manage_package() {
     fi
 }
 
-# === JDUPES ===
-pkg_name="$(get_latest_github_pkg_name "jdupes-")"
+# === NETCAT ===
+pkg_name="$(get_latest_github_pkg_name "netcat-openbsd-")"
 if [ -z "$pkg_name" ]; then
-    echo
-    echo "❌ Could not find jdupes package"
+    echo "❌ Could not find netcat-openbsd package"
     exit 1
 fi
 pkg_url="https://github.com/jcofer555/unraid_packages/raw/refs/heads/main/$pkg_name"
-pkg_check="ls /var/log/packages | grep -q '^jdupes-'"
-slack_pkg_id="jdupes"
-display_name="Jdupes"
+pkg_check="ls /var/log/packages | grep -q '^netcat-openbsd-'"
+slack_pkg_id="netcat-openbsd"
+display_name="Netcat-openbsd"
 
 manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name" || {
-    echo
-    echo "❌ Aborting: jdupes failed. libjodycode will not be processed."
+    echo "❌ Aborting: netcat-openbsd failed. libmd will not be processed."
     exit 1
 }
 
-# === LIBJODYCODE ===
-pkg_name="$(get_latest_github_pkg_name "libjodycode-")"
+# === LIBMD ===
+pkg_name="$(get_latest_github_pkg_name "libmd-")"
 if [ -z "$pkg_name" ]; then
-    echo
-    echo "❌ Could not find libjodycode package"
+    echo "❌ Could not find libmd package"
     exit 1
 fi
 pkg_url="https://github.com/jcofer555/unraid_packages/raw/refs/heads/main/$pkg_name"
-pkg_check="ldconfig -p | grep -q libjodycode"
-slack_pkg_id="libjodycode"
-display_name="Libjodycode"
+pkg_check="ldconfig -p | grep -q libmd.so.0"
+slack_pkg_id="libmd"
+display_name="Libmd"
 
-manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"
+manage_package "$pkg_name" "$pkg_url" "$pkg_check" "$slack_pkg_id" "$display_name"```

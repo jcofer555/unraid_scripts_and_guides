@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Variables
@@ -47,4 +48,4 @@ if [ "$num_backups" -gt "$MAX_BACKUPS" ]; then
     done
 else
     echo "Only $num_backups backup files found; no cleanup required"
-fi
+fi```

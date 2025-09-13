@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
     #### MAKE SURE THIS AND ANY OTHER SCRIPT DOESN'T HAVE THE WORD MOVER IS THE NAME ####
@@ -79,4 +80,4 @@ for container in "$QBM_CONTAINER_NAME"; do
     fi
 done
 
-fi
+fi```

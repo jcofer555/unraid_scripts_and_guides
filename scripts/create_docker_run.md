@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Define the container name you want to create a docker run from
@@ -25,4 +26,4 @@ printf "docker run -d\n"
 printf "%s\n" "$PORTS"
 printf "%s\n" "$VOLUMES"
 printf "%s\n" "$ENV_VARS"
-printf "%s\n" "$IMAGE"
+printf "%s\n" "$IMAGE"```

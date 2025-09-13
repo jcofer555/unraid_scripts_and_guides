@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # This script checks unraids webui ports, docker container ports, ports that VM's use for vnc, and whether VM manager service is running which then uses port 53
@@ -43,4 +44,4 @@ elif [[ -z "$RESULT" ]]; then
 # Check matches a container    
 else
     echo "$RESULT container has port $PORT_TO_SEARCH in use."
-fi
+fi```

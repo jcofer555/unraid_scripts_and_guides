@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Configurable Variables
@@ -56,3 +57,4 @@ USED2=$(df -h --si "$MOUNT_POINT" | awk 'NR==2 {print $5}' | sed 's/%//')
 echo "📉 Post-trigger disk usage: ${USED2}% full"
 
 echo "✅ Automover script completed"
+```

@@ -1,3 +1,4 @@
+```bash
 #!/bin/sh
 
 # Variables
@@ -38,4 +39,4 @@ for disk in "${DISKS_TO_SCAN[@]}"; do
     else
         echo "Failed to scan disk tree for $fullpath"
     fi
-done
+done```
