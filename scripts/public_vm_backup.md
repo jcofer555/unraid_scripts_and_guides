@@ -1053,7 +1053,7 @@ only_send_error_notifications="0"
   # check the name of the script is as it should be. if yes, continue. if no, exit.
   if [ "$me" == "$official_script_name" ]; then
 
-    notification_message "information: official_script_name is $official_script_name. script file's name is $me. script name is valid. continuing."
+    notification_message "information: script name is valid. continuing."
 
   elif [ ! "$me" == "$official_script_name" ]; then
 
@@ -1069,7 +1069,7 @@ only_send_error_notifications="0"
 
     if [ "$enabled" -eq 1 ]; then
 
-      notification_message "information: enabled is $enabled. script is enabled. continuing."
+      notification_message "information: script is enabled. continuing."
 
     elif [ ! "$enabled" -eq 1 ]; then
 
