@@ -32,7 +32,7 @@ SMBD_ACTIVE=$(pgrep -x smbd)
 
 # Check SSH
 SSH_PORT=$(grep -E "PORTSSH=" /boot/config/ident.cfg | sed -E 's/[^0-9]//g')
-USE_SSH=$(grep -E '^USE_SSH=' /boot/config/ident.cfg | cut -d '=' -f2 | tr -d '"\r\n' | xargs)
+SSHD_ACTIVE=$(pgrep -x sshd)
 
 # Check Unraid WebUI ports
 UNRAID_HTTP_PORT=$(grep -E "PORT=" /boot/config/ident.cfg | sed -E 's/[^0-9]//g')
@@ -71,7 +71,7 @@ elif [[ "$PORT_TO_SEARCH" == "$UNRAID_HTTPS_PORT" ]]; then
     echo "Port $PORT_TO_SEARCH is being used by Unraid's WebUI for HTTPS."
     FOUND_MATCH=true
 
-elif [[ "$PORT_TO_SEARCH" == "$SSH_PORT" && "$USE_SSH" == "yes" ]]; then
+elif [[ "$PORT_TO_SEARCH" == "$SSHD_ACTIVE" && "$SSHD_ACTIVE" == "yes" ]]; then
     echo "Port $PORT_TO_SEARCH is being used by SSH."
     FOUND_MATCH=true
 
