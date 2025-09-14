@@ -4,7 +4,7 @@
 # This script checks if a tcp port is in use
 
 # Change this to the port you want to search
-PORT_TO_SEARCH="80"
+PORT_TO_SEARCH="111"
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
         
@@ -16,7 +16,7 @@ if ! [[ "$PORT_TO_SEARCH" =~ ^[0-9]+$ ]]; then
 fi
 
 # === CHECK IF PORT IS LISTENING ===
-if ! netstat -ltnp 2>/dev/null | grep ":$PORT_TO_SEARCH "; then
+if ! netstat -ltnp | grep -q ":$PORT_TO_SEARCH "; then
     echo "Port $PORT_TO_SEARCH is not currently in use on the system"
     exit 0
 fi
@@ -42,8 +42,8 @@ UNRAID_HTTPS_PORT=$(grep -E "PORTSSL=" /boot/config/ident.cfg | sed -E 's/[^0-9]
 VM_MANAGER_ACTIVE=$(pgrep -x libvirtd)
 
 # Check docker container ports
-RESULT=$(netstat -ltnp 2>/dev/null \
-  | grep ":$PORT_TO_SEARCH " \
+RESULT=$(netstat -ltnp \
+  | grep -q ":$PORT_TO_SEARCH " \
   | sed -n 's|.* \([0-9]\+\)/.*|\1|p' \
   | xargs -r -I{} cat /proc/{}/cgroup \
   | grep '/docker/' \
@@ -82,15 +82,13 @@ elif [[ ( "$PORT_TO_SEARCH" == "53" || "$PORT_TO_SEARCH" == "67" ) && -n "$VM_MA
 elif [[ -n "$RESULT" ]]; then
     echo "$RESULT container has port $PORT_TO_SEARCH in use."
     FOUND_MATCH=true
-fi
 
 elif [[ -n "$SMBD_ACTIVE" && ( "$PORT_TO_SEARCH" == "139" || "$PORT_TO_SEARCH" == "445" ) ]]; then
-    echo "Port $PORT_TO_SEARCH is in use by SMB (smbd is running)."
+    echo "Port $PORT_TO_SEARCH is in use by SMB."
     FOUND_MATCH=true
-fi
 
 elif [[ -n "$NFS_ACTIVE" && ( "$PORT_TO_SEARCH" == "2049" || "$PORT_TO_SEARCH" == "111" || "$PORT_TO_SEARCH" == "4045" || "$PORT_TO_SEARCH" -ge 32765 && "$PORT_TO_SEARCH" -le 32768 ) ]]; then
-    echo "Port $PORT_TO_SEARCH is in use by NFS (NFS-related service is running)."
+    echo "Port $PORT_TO_SEARCH is in use by NFS."
     FOUND_MATCH=true
 fi
 
