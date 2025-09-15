@@ -22,7 +22,7 @@
   > - Confirm vm manager is stopped by checking the status at the top right of the settings —> vm manager screen
 ### 7. Reboot unraid
 ### 8. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
-### 9. Once the array has started and things look ok, re-enable docker at settings —> docker enabled docker to yes and hit apply and vm manager services at settings —> vm manager and hit apply
+### 9. Once the array has started and things look ok, re-enable docker at settings —> docker and set enable docker to yes and hit apply then re-enable vm manager at settings —> vm manager and set enable vms to yes and hit apply
   > [!NOTE]
   > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
   > - Confirm vm manager is started by checking the status at the top right of the settings —> vm manager screen
