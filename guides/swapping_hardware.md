@@ -14,10 +14,10 @@
   > - This will reset your network settings for unraid to defaults which uses dhcp to get an ip address so your ip might change if you don't have an ip reservation in your router
   > - Use the monitor and keyboard or your routers webui to check what the new unraid ip is
 ### 4. Go to settings —> disk settings and set enable auto start to no and hit apply to prevent the array from auto-starting after the update
-### 5. Go to settings —> docker change enable docker to no and hit apply
+### 5. Go to settings —> docker set enable docker to no and hit apply to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
-### 6. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no and hit apply
+### 6. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no and hit apply to stop the vm manager service and all vms
   > [!NOTE]
   > - Confirm vm manager is stopped by checking the status at the top right of the settings —> vm manager screen
 ### 7. Reboot unraid

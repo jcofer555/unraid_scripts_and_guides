@@ -13,6 +13,9 @@
 ### 4. Once creator or manual method is done successfully copy the entire config folder from your backup onto the flash drive, if you get a popup asking if you want to overwrite files say yes
 > [!IMPORTANT]
 > - Make sure there is only one .key file within config, deleting all but the one that matches your current license if there happens to be more than one in there
+
+> [!NOTE]
+> - The .key filenames are named after your license type, so if you have a starter license then the .key filename will be starter.key for example
 ### 5. Copy the syslinux.cfg file from your backups syslinux folder and put into the syslinux folder on the flash drive and say yes if you get asked to overwrite
 > [!NOTE]
 > - Don't copy the entire syslinux folder, copy only the syslinux.cfg file that is within the syslinux folder
