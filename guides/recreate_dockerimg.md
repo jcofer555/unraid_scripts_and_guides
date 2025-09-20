@@ -54,7 +54,7 @@ input_dir="/boot/config/plugins/dockerMan/templates-user"
 
 # Check if we can write to the temporary output file location
 if ! touch "$temporary_output_file" 2>/dev/null; then
-  echo "Error: Unable to write to $temporary_output_file. Check permissions, check if system share exists and what it's settings are."
+  echo "Error: Unable to write to $temporary_output_file. Check permissions, check if share exists where temporary_output_file is set to"
   exit 1
 fi
 
@@ -63,12 +63,12 @@ fi
 
 # Loop through all XML files in the directory
 for file in "$input_dir"/*.xml; do
-  grep -oP '(?<=<Network>).*?(?=</Network>)' "$file" | grep -v "host" | grep -v "none" | grep -v "bridge" | grep -v "^br" | grep -v "^eth" | grep -v "^wg" | grep -v "container:"
+  grep -oP '(?<=<Network>).*?(?=</Network>)' "$file" | grep -v "host" | grep -v "none" | grep -v "bridge" | grep -v "^br0" | grep -v "^br1" | grep -v "^br2" | grep -v "^eth" | grep -v "^wg" | grep -v "container:"
 done | sort | uniq > "$temporary_output_file"
 
 # Check if the output file is empty
 if [[ ! -s "$temporary_output_file" ]]; then
-  echo "No custom Docker networks detected."
+  echo "No custom docker networks detected."
 else
   echo "Custom networks are as follows:"
   while IFS= read -r line; do
