@@ -1,4 +1,4 @@
-# STEPS TO RECREATE YOUR DOCKER.IMG:
+# STEPS TO RECREATE YOUR DOCKER.IMG OR DOCKER FOLDER:
 > [!IMPORTANT] 
 > - Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
 > - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
@@ -19,9 +19,11 @@
   > - Optional: change docker data-root
 
   > [!TIP]
-  > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vvisk location
+  > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vdisk location, backing up the docker folder might take a long time since it's made up of a ton of small files
   > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
-## 3. Go to settings —> docker put a check in the delete vdisk file box and hit delete at the bottom
+## 3. Go to settings —> docker put a check in the delete box and hit delete at the bottom
+  > [!NOTE]
+  > - Deleting docker folder may take a long time using this method since it's made up of a ton of small files so to make it faster you can delete it from terminal using `rm -rfd /path/to/folder`
 ## 4. Go to settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
   > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
