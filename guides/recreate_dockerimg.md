@@ -3,7 +3,6 @@
 > - Before starting confirm your templates are available on the flash drive at path `/boot/config/plugins/dockerMan/templates-user`, they will show as xml files.
 > - If checking the flash drive via windows then it would be just `/config/plugins/dockerMan/templates-user`
 > - You won't lose any data and all settings for your containers will be retained unless your flash drive is corrupted which is why you check the flash drive for the xml templates before starting like mentioned above
-> - This process will work for docker folder as well
 
 > [!WARNING]
 > - This process only works for containers that use templates, so if using docker compose or docker run manually or another deployment method like portainer or similar then this isn't the guide for you
