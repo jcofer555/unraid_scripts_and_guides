@@ -2,42 +2,71 @@
 #!/bin/sh
 
 # Variables
-SHARE_TREE_PATH="/mnt/user/data/sharestree"
-DISK_TREE_PATH="/mnt/user/data/diskstree"
-SHARES_TO_SCAN=(data mymedia)
-DISKS_TO_SCAN=(disk1 disk2 disk3)
+MOUNT_POINT="/mnt/user/data/computer/unraidstuff/dirtree"
 
-        #### DON'T CHANGE ANYTHING BELOW HERE ####
+#### DON'T CHANGE ANYTHING BELOW HERE ####
+#### REQUIRE PYTHON3 PLUGIN TO BE INSTALLED ####
 
-echo "****Starting scan for shares****"
-echo
-for share in "${SHARES_TO_SCAN[@]}"; do
-    fullpath="/mnt/user/$share"
-    echo "Scanning array tree for $fullpath"
-    if tree -o "$SHARE_TREE_PATH/${share}.txt" "$fullpath"; then
-        echo "Tree for $fullpath saved to $SHARE_TREE_PATH/${share}.txt"
-        echo
+# Check if python3 is installed
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "Error: python3 is not installed. Please install the Python3 plugin from apps page by rysz and try again."
+    exit 1
+else
+    echo "Python3 is installed."
+fi
+
+# Ensure disktree backup location exists
+echo "Checking if backup destination exists $MOUNT_POINT"
+if [ -d "$MOUNT_POINT" ]; then
+    echo "Backup destination already exists $MOUNT_POINT"
+else
+    echo "Backup destination does not exist, Attempting to create $MOUNT_POINT"
+    if mkdir -p "$MOUNT_POINT"; then
+        echo "Successfully created backup destination $MOUNT_POINT"
     else
-        echo "Failed to scan array tree for $fullpath"
+        echo "Failed to create backup destination $MOUNT_POINT"
+        exit 1
+    fi
+fi
+
+# Change ownership of the disktree backup directory
+echo "Changing ownership of $MOUNT_POINT"
+if chown -R jcofer555:users "$MOUNT_POINT"; then
+    echo "Successfully changed ownership of $MOUNT_POINT"
+    echo
+else
+    echo "Failed to change ownership of $MOUNT_POINT"
+fi
+
+# Function to check if a Python package is installed
+check_python_package() {
+    python3 -c "import $1" >/dev/null 2>&1
+}
+
+# Packages to check
+packages=("pandas" "openpyxl")
+
+for pkg in "${packages[@]}"; do
+    echo "Checking for Python package: $pkg"
+    if check_python_package "$pkg"; then
+        echo "$pkg is already installed"
+    else
+        echo "$pkg not found, installing..."
+        if pip install "$pkg"; then
+            echo "Successfully installed $pkg"
+        else
+            echo "Failed to install $pkg via pip"
+            exit 1
+        fi
     fi
 done
-
-echo "****Starting scan for disks****"
 echo
-for disk in "${DISKS_TO_SCAN[@]}"; do
-    fullpath="/mnt/$disk"
-    echo "Scanning disk tree for $fullpath"
-    if mkdir -p "$DISK_TREE_PATH/$disk"; then
-        echo "Directory created for $disk in $DISK_TREE_PATH"
-    else
-        echo "Failed to create directory for disk $disk"
-    fi
 
-    if tree -o "$DISK_TREE_PATH/$disk/disktree.txt" "$fullpath"; then
-        echo "Tree for $fullpath saved to $DISK_TREE_PATH/$disk/disktree.txt"
-        echo
-    else
-        echo "Failed to scan disk tree for $fullpath"
-    fi
-done
+# Run dirtree python script
+echo "Starting dirtree python script"
+chmod +x "/mnt/user/data/computer/unraidstuff/dirtree.py"
+/usr/bin/python3 "/mnt/user/data/computer/unraidstuff/dirtree.py" 2>&1
+echo "Dirtree python script finished"
+echo
+
 ```
