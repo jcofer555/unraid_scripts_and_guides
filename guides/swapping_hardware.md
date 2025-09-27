@@ -2,6 +2,7 @@
 > [!IMPORTANT]
 > - **DO NOT SKIP STEP 1**
 > - Unraid is mostly hardware agnostic so your drives and data is safe 99.9% of the time, you can help make things go smoother by following the below
+> - Your license is tied to the flash drive so you can just swap that to the new hardware and your license will continue like normal
 
 > [!TIP]
 > - Have a monitor and keyboard hooked to the server for any troubleshooting that might come up
