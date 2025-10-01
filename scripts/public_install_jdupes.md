@@ -55,7 +55,7 @@ fi
 # === FUNCTION TO FETCH LATEST PACKAGE FROM GITHUB ===
 get_latest_github_pkg_name() {
     local prefix="$1"
-    local suffix=".tgz"
+    local suffix=".txz"
     local api_url="https://api.github.com/repos/jcofer555/unraid_packages/contents/?ref=main"
 
     curl -s "$api_url" | jq -r \
@@ -71,7 +71,7 @@ manage_package() {
     local slack_pkg_name="$4"
     local display_name="$5"
     local pkg_path="/boot/extra/$pkg_name"
-    local new_version=$(echo "$pkg_name" | sed "s/^$slack_pkg_name-//" | sed 's/\.tgz//')
+    local new_version=$(echo "$pkg_name" | sed "s/^$slack_pkg_name-//" | sed 's/\.txz//')
 
     echo
     echo "### $display_name ###"
