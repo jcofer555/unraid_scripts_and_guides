@@ -23,6 +23,7 @@
 ## 3. Go to settings —> docker put a check in the delete box and hit delete at the bottom
   > [!NOTE]
   > - Deleting docker folder may take a long time using this method since it's made up of a ton of small files so to make it faster you can delete it from terminal using `rm -rfd /path/to/folder`
+  > - If you wish you can change from folder to image or image to folder at this point
 ## 4. Go to settings —> docker change enable docker to yes and hit apply
   > [!NOTE]
   > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
