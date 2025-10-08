@@ -25,13 +25,23 @@ parse_template_configs() {
     for cfg in "${cfg_lines[@]}"; do
         target=$(echo "$cfg" | sed -n 's/.*Target="\([^"]*\)".*/\1/p')
         host=$(echo "$cfg" | sed -n 's/.*>\(.*\)<\/Config>/\1/p' | xargs)
-        
-        # Remove trailing slash from paths
-        [[ "$type" == "Path" ]] && host="${host%/}"
-        
-        # Append /Mode for ports if Mode exists
+        mode=$(echo "$cfg" | sed -n 's/.*Mode="\([^"]*\)".*/\1/p')
+
+        if [[ "$type" == "Path" ]]; then
+            host="${host%/}"
+            access=$(echo "$mode" | cut -d',' -f1)
+            prop=$(echo "$mode" | cut -d',' -f2)
+
+            if [[ -n "$access" ]]; then
+                if [[ "$prop" == "slave" || "$prop" == "shared" ]]; then
+                    host="$host ($access,$prop)"
+                else
+                    host="$host ($access)"
+                fi
+            fi
+        fi
+
         if [[ "$type" == "Port" ]]; then
-            mode=$(echo "$cfg" | sed -n 's/.*Mode="\([^"]*\)".*/\1/p')
             [[ -n "$mode" ]] && target="$target/$mode"
         fi
 
@@ -46,7 +56,6 @@ parse_template_configs() {
     echo "Generated: $(date)"
     echo
 
-    # Get all container names sorted alphabetically
     mapfile -t containers < <(docker ps -a --format '{{.Names}}' | sort -f)
 
     for container in "${containers[@]}"; do
@@ -57,15 +66,23 @@ parse_template_configs() {
         # PATHS (Inspect)
         # -------------------
         echo "Path Mappings (Inspect):"
-        mapfile -t inspect_paths < <(
-            docker inspect --format='{{range .Mounts}}- Container: {{.Destination}} -> Host: {{.Source}}{{"\n"}}{{end}}' "$container" 2>/dev/null \
+        mapfile -t inspect_paths_raw < <(
+            docker inspect --format='{{range .Mounts}}- Container: {{.Destination}} -> Host: {{.Source}} ({{if .RW}}rw{{else}}ro{{end}}{{with .Propagation}},{{.}}{{end}}){{"\n"}}{{end}}' "$container" 2>/dev/null \
                 | sed '/^[[:space:]]*$/d' | sort -u
         )
-        # Remove trailing slash from inspect paths as well
-        for i in "${!inspect_paths[@]}"; do
-            inspect_paths[$i]=$(echo "${inspect_paths[$i]}" | sed 's|/$||')
-        done
+        inspect_paths=()
+        for line in "${inspect_paths_raw[@]}"; do
+            mode=$(echo "$line" | sed -n 's/.*(\(.*\))$/\1/p')
+            access=$(echo "$mode" | cut -d',' -f1)
+            prop=$(echo "$mode" | cut -d',' -f2)
 
+            if [[ "$mode" == "$access" || "$prop" == "rprivate" || -z "$prop" ]]; then
+                clean=$(echo "$line" | sed -E 's/ \((rw|ro)(,[^)]*)?\)/ (\1)/')
+                inspect_paths+=("$clean")
+            else
+                inspect_paths+=("$line")
+            fi
+        done
         if [ ${#inspect_paths[@]} -eq 0 ]; then
             echo "  (none)"
         else
@@ -87,19 +104,19 @@ parse_template_configs() {
             for p in "${template_paths[@]}"; do echo "  $p"; done
         fi
 
-# -------------------
-# Diff Paths
-# -------------------
-echo "Diff Paths:"
-diff_lines=$( { 
-    comm -23 <(printf "%s\n" "${inspect_paths[@]}" | sort) <(printf "%s\n" "${template_paths[@]}" | sort) | sed 's/^/  [Only in Inspect] /'
-    comm -13 <(printf "%s\n" "${inspect_paths[@]}" | sort) <(printf "%s\n" "${template_paths[@]}" | sort) | sed 's/^/  [Only in Template] /'
-} )
-if [ -z "$diff_lines" ]; then
-    echo "  (none)"
-else
-    echo "$diff_lines"
-fi
+        # -------------------
+        # Diff Paths
+        # -------------------
+        echo "Diff Paths:"
+        diff_lines=$( {
+            comm -23 <(printf "%s\n" "${inspect_paths[@]}" | sort) <(printf "%s\n" "${template_paths[@]}" | sort) | sed 's/^/  [Only in Inspect] /'
+            comm -13 <(printf "%s\n" "${inspect_paths[@]}" | sort) <(printf "%s\n" "${template_paths[@]}" | sort) | sed 's/^/  [Only in Template] /'
+        } )
+        if [ -z "$diff_lines" ]; then
+            echo "  (none)"
+        else
+            echo "$diff_lines"
+        fi
 
         echo
 
@@ -133,19 +150,19 @@ fi
             for p in "${template_ports[@]}"; do echo "  $p"; done
         fi
 
-# -------------------
-# Diff Ports
-# -------------------
-echo "Diff Ports:"
-diff_lines=$( { 
-    comm -23 <(printf "%s\n" "${inspect_ports[@]}" | sort) <(printf "%s\n" "${template_ports[@]}" | sort) | sed 's/^/  [Only in Inspect] /'
-    comm -13 <(printf "%s\n" "${inspect_ports[@]}" | sort) <(printf "%s\n" "${template_ports[@]}" | sort) | sed 's/^/  [Only in Template] /'
-} )
-if [ -z "$diff_lines" ]; then
-    echo "  (none)"
-else
-    echo "$diff_lines"
-fi
+        # -------------------
+        # Diff Ports
+        # -------------------
+        echo "Diff Ports:"
+        diff_lines=$( {
+            comm -23 <(printf "%s\n" "${inspect_ports[@]}" | sort) <(printf "%s\n" "${template_ports[@]}" | sort) | sed 's/^/  [Only in Inspect] /'
+            comm -13 <(printf "%s\n" "${inspect_ports[@]}" | sort) <(printf "%s\n" "${template_ports[@]}" | sort) | sed 's/^/  [Only in Template] /'
+        } )
+        if [ -z "$diff_lines" ]; then
+            echo "  (none)"
+        else
+            echo "$diff_lines"
+        fi
 
         echo
     done
