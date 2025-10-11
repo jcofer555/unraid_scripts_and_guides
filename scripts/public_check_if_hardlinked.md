@@ -6,7 +6,7 @@ SEARCH_DIR="/mnt/user/appdata"
 LOG_NOT_HARDLINKED="$SEARCH_DIR/files_not_hardlinked.log"
 JDUPE_LOG="$SEARCH_DIR/jdupes_hardlinking.log"
 
-SKIP_JDUPES="no"               # Skip jdupes even if installed
+RUN_JDUPES="no"               # Skip jdupes even if installed
 DRY_RUN="no"                  # Preview only, no changes
 INSTALL_JDUPES_PACKAGES="yes" # Set to "yes" to install jdupes/libjodycode if missing
 
@@ -121,7 +121,7 @@ else
 fi
 
 # === RUN JDUPES ===
-if [ "$SKIP_JDUPES" != "yes" ] && command -v jdupes >/dev/null 2>&1; then
+if [ "$RUN_JDUPES" = "yes" ] && command -v jdupes >/dev/null 2>&1; then
     if [ "$DRY_RUN" = "yes" ]; then
         echo "DRY_RUN: Skipping jdupes execution and log creation"
     else
