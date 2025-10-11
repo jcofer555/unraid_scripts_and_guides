@@ -2,9 +2,6 @@
 #!/bin/bash
 
 # Variables
-UNIFI_PATH="/usr/lib/unifi/data/backup/autobackup/*"
-UNIFI_DIR="/usr/lib/unifi/data/backup/autobackup"
-	#### DON'T CHANGE THE ABOVE ####
 UNIFI_SERVER="10.100.10.1"
 UNIFI_USER="root"
 UNIFI_PASSWORD="unifi-ssh-password"
@@ -14,6 +11,9 @@ UNRAID_GROUP="users"
 NUM_BACKUPS=15  # Number of backups to retrieve and keep
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
+        
+UNIFI_PATH="/usr/lib/unifi/data/backup/autobackup/*"
+UNIFI_DIR="/usr/lib/unifi/data/backup/autobackup"        
         
 # === VALIDATE NUMERIC VARIABLE ===
 if ! [[ "$NUM_BACKUPS" =~ ^[0-9]+$ ]]; then
