@@ -10,6 +10,8 @@ RUN_JDUPES="no"               # Skip jdupes even if installed
 DRY_RUN="no"                  # Preview only, no changes
 INSTALL_JDUPES_PACKAGES="yes" # Set to "yes" to install jdupes/libjodycode if missing
 
+#### DON'T CHANGE ANYTHING BELOW HERE ####
+
 # === VALIDATE INSTALL VARIABLE ===
 if [[ "$INSTALL_JDUPES_PACKAGES" != "yes" && "$INSTALL_JDUPES_PACKAGES" != "no" ]]; then
     echo "❌ Invalid value for INSTALL_JDUPES_PACKAGES: $INSTALL_JDUPES_PACKAGES"
