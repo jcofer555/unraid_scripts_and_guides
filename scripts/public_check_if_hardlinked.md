@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # === CONFIGURATION ===
-SEARCH_DIR="/mnt/user/appdata"
+SEARCH_DIR="/mnt/user/system"
 LOG_NOT_HARDLINKED="$SEARCH_DIR/files_not_hardlinked.log"
 JDUPE_LOG="$SEARCH_DIR/jdupes_hardlinking.log"
 
@@ -20,8 +20,8 @@ if [[ "$INSTALL_JDUPES_PACKAGES" != "yes" && "$INSTALL_JDUPES_PACKAGES" != "no" 
 fi
 
 # === VALIDATE INSTALL VARIABLE ===
-if [[ "$SKIP_DUPES" != "yes" && "$SKIP_JDUPES" != "no" ]]; then
-    echo "❌ Invalid value for SKIP_JDUPES: $SKIP_JDUPES"
+if [[ "$RUN_DUPES" != "yes" && "$RUN_JDUPES" != "no" ]]; then
+    echo "❌ Invalid value for SRUN_JDUPES: $RUN_JDUPES"
     echo "Please set it to 'yes' or 'no'"
     exit 1
 fi
