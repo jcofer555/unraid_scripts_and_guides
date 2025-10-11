@@ -6,9 +6,9 @@ SEARCH_DIR="/mnt/user/appdata"
 LOG_NOT_HARDLINKED="$SEARCH_DIR/files_not_hardlinked.log"
 JDUPE_LOG="$SEARCH_DIR/jdupes_hardlinking.log"
 
-RUN_JDUPES="no"               # Set to "yes" if you want jdupes to run against what is found to be not hardlinked
 DRY_RUN="no"                  # Set to "yes" if you want to do a test run
-INSTALL_JDUPES_PACKAGES="yes" # Set to "yes" to install jdupes/libjodycode if missing
+INSTALL_JDUPES_PACKAGES="no"  # Set to "yes" to install jdupes/libjodycode if missing
+RUN_JDUPES="no"               # Set to "yes" if you want jdupes to run against what is found to be not hardlinked
 
 #### DON'T CHANGE ANYTHING BELOW HERE ####
 
