@@ -18,10 +18,10 @@
 ### 5. Go to settings —> docker set enable docker to no and hit apply to stop the docker service and all containers
   > [!NOTE]
   > - Confirm docker is stopped by checking the status at the top right of the settings —> docker screen
-### 6. Shutdown any running virtual machines and then go to settings —> vm manager and set enable vms to no and hit apply to stop the vm manager service and all vms
+### 6. Shutdown any running virtual machines manually and then go to settings —> vm manager and set enable vms to no and hit apply to stop the vm manager service
   > [!NOTE]
   > - Confirm vm manager is stopped by checking the status at the top right of the settings —> vm manager screen
-### 7. Reboot unraid
+### 7. Shutdown unraid and perform your hardware changes then power the system back on
 ### 8. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
 ### 9. Once the array has started and things look ok, re-enable docker at settings —> docker and set enable docker to yes and hit apply then re-enable vm manager at settings —> vm manager and set enable vms to yes and hit apply
   > [!NOTE]
