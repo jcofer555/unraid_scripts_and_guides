@@ -30,7 +30,6 @@
 ## 5. Create the custom docker network or networks you had prior by going to unraids terminal and typing the command for each one needing created `docker network create name` changing name to the names you need it to be. If done correctly you will see a string of characters as output
   > [!NOTE]
   > - another way to confirm is to open unraids terminal and type `docker network ls` and you will see the name shown in the list
-  > [!NOTE]
   > - If you hadn't created any custom networks you can skip step 5
 ## 6. Go to apps —> previous apps and select all or select the ones you want and hit install
   > [!NOTE]
