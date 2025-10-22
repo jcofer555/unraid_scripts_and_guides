@@ -20,7 +20,7 @@
   > [!TIP]
   > - Optional: backup the docker.img file using a file manager or via terminal, check path at settings —> docker > docker vdisk location, backing up the docker folder might take a long time since it's made up of a ton of small files
   > - Optional: go to apps —> previous apps and remove anything from your previous installs that you won't want to bring back after to make the next steps go smoother
-## 3. Go to settings —> docker put a check in the delete box for the vdisk and hit delete at the bottom
+## 3. Go to settings —> docker put a check in the delete box for the vdisk or folder and hit delete at the bottom
   > [!NOTE]
   > - Deleting docker folder may take a long time using this method since it's made up of a ton of small files so to make it faster you can delete it from terminal using `rm -rfd /path/to/folder`
   > - If you wish you can change from folder to image or image to folder at this point
