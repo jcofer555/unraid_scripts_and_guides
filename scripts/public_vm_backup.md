@@ -13,7 +13,7 @@ vm2
 vm3
 "
 
-# Owner and group for backup files
+# Owner for backup files
 backup_owner="jcofer555"
 
         #### DON'T CHANGE ANYTHING BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ####
