@@ -1,6 +1,10 @@
 ```bash
 #!/bin/bash
 
+# ============================================================
+# Variables to change
+# ============================================================
+
 # VM names
 vm_names=("vm1" "vm2" "vm3")
 
@@ -14,28 +18,32 @@ DRY_RUN=false
 
         #### DON'T CHANGE ANYTHING BELOW HERE UNLESS YOU KNOW WHAT YOU'RE DOING ####
 
+# ============================================================
 # System paths
+# ============================================================
 xml_base="/etc/libvirt/qemu"
 nvram_base="$xml_base/nvram"
 
 mkdir -p "$nvram_base"
 
-# ========================
+# ============================================================
 # Output helper functions
-# ========================
+# ============================================================
 log()  { echo -e "[INFO]  $1"; }
 warn() { echo -e "[WARN]  $1"; }
 err()  { echo -e "[ERROR] $1"; }
 
-# ========================
+# ============================================================
 # Dry-run mode detection
-# ========================
+# ============================================================
 if [[ "$1" == "--dry-run" ]]; then
     DRY_RUN=true
     warn "RUNNING IN DRY-RUN MODE — NO CHANGES WILL BE MADE"
 fi
 
-# Wrapper for commands
+# ============================================================
+# Dry run wrapper
+# ============================================================
 run_cmd() {
     if $DRY_RUN; then
         echo "[DRY RUN] $*"
@@ -59,9 +67,9 @@ for vm in "${vm_names[@]}"; do
     nvram_file=$(ls "$backup_dir"/*_VARS-pure-efi.fd 2>/dev/null | head -n1)
     disks=( "$backup_dir"/vdisk*.img )
 
-    # --------------------------------------
+    # ============================================================
     # Validate backup contents
-    # --------------------------------------
+    # ============================================================
     if [[ ! -d "$backup_dir" ]]; then
         err "Backup folder missing: $backup_dir"
         continue
@@ -81,9 +89,9 @@ for vm in "${vm_names[@]}"; do
 
     log "Backup validated."
 
-    # --------------------------------------
+    # ============================================================
     # Shutdown VM cleanly
-    # --------------------------------------
+    # ============================================================
     if virsh list --state-running | grep -q " $vm "; then
         log "Shutting down VM gracefully..."
 
@@ -98,9 +106,9 @@ for vm in "${vm_names[@]}"; do
         log "VM is not running."
     fi
 
-    # --------------------------------------
+    # ============================================================
     # Restore XML
-    # --------------------------------------
+    # ============================================================
     dest_xml="$xml_base/$vm.xml"
     log "Restoring XML → $dest_xml"
 
@@ -108,9 +116,9 @@ for vm in "${vm_names[@]}"; do
     run_cmd cp "$xml_file" "$dest_xml"
     run_cmd chmod 644 "$dest_xml"
 
-    # --------------------------------------
-    # Restore NVRAM (keep UUID name!)
-    # --------------------------------------
+    # ============================================================
+    # Restore NVRAM
+   # ============================================================
     nvram_filename=$(basename "$nvram_file")
     dest_nvram="$nvram_base/$nvram_filename"
 
@@ -120,9 +128,9 @@ for vm in "${vm_names[@]}"; do
     run_cmd cp "$nvram_file" "$dest_nvram"
     run_cmd chmod 644 "$dest_nvram"
 
-    # --------------------------------------
+    # ============================================================
     # Restore vdisks
-    # --------------------------------------
+    # ============================================================
     dest_domain="$vm_domains/$vm"
     run_cmd mkdir -p "$dest_domain"
 
@@ -133,9 +141,9 @@ for vm in "${vm_names[@]}"; do
         run_cmd chmod 644 "$dest_domain/$file"
     done
 
-    # --------------------------------------
+    # ============================================================
     # Redefine VM
-    # --------------------------------------
+    # ============================================================
     log "Redefining VM via libvirt…"
     run_cmd virsh define "$dest_xml"
 
@@ -144,9 +152,9 @@ for vm in "${vm_names[@]}"; do
 done
 
 echo ""
-echo "=========================================="
+echo "============================================================"
 echo "       VM RESTORE PROCESS COMPLETE"
-echo "=========================================="
+echo "============================================================"
 $DRY_RUN && echo "[DRY RUN] No changes were made."
 
 ```
