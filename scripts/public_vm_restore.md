@@ -14,6 +14,7 @@ backup_path="/mnt/user/data/computer/backups/unraid_vms"
 # VM storage location
 vm_domains="/mnt/user/domains"
 
+# Dry run option. Set to true to do a test run
 DRY_RUN=false
 
         #### DON'T CHANGE ANYTHING BELOW HERE UNLESS YOU KNOW WHAT YOU'RE DOING ####
@@ -46,7 +47,13 @@ validation_fail() {
 # ============================================================
 if [[ "$1" == "--dry-run" ]]; then
     DRY_RUN=true
-    warn "RUNNING IN DRY-RUN MODE — NO CHANGES WILL BE MADE"
+fi
+
+if $DRY_RUN; then
+echo ""
+echo "============================================================"
+echo "RUNNING IN DRY-RUN MODE — NO CHANGES WILL BE MADE"
+echo "============================================================"
 fi
 
 # ============================================================
@@ -156,6 +163,7 @@ for vm in "${vm_names[@]}"; do
     run_cmd virsh define "$dest_xml"
 
     log "VM $vm restore completed."
+    restored_vms+=("$vm")
 
 done
 
