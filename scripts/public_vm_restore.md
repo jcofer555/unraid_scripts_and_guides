@@ -27,11 +27,19 @@ nvram_base="$xml_base/nvram"
 mkdir -p "$nvram_base"
 
 # ============================================================
-# Output helper functions
+# Log output helpers
 # ============================================================
 log()  { echo -e "[INFO]  $1"; }
 warn() { echo -e "[WARN]  $1"; }
 err()  { echo -e "[ERROR] $1"; }
+
+# ============================================================
+# Validation failure helper
+# ============================================================
+validation_fail() {
+    err "$1"
+    warn "Skipping VM: $vm"
+}
 
 # ============================================================
 # Dry-run mode detection
@@ -71,19 +79,19 @@ for vm in "${vm_names[@]}"; do
     # Validate backup contents
     # ============================================================
     if [[ ! -d "$backup_dir" ]]; then
-        err "Backup folder missing: $backup_dir"
+        validation_fail "Backup folder missing: $backup_dir"
         continue
     fi
     if [[ ! -f "$xml_file" ]]; then
-        err "XML file missing: $xml_file"
+        validation_fail "XML file missing: $xml_file"
         continue
     fi
     if [[ ! -f "$nvram_file" ]]; then
-        err "NVRAM file missing (expected UUID*_VARS-pure-efi.fd)"
+        validation_fail "NVRAM file missing (expected UUID*_VARS-pure-efi.fd)"
         continue
     fi
     if [[ ! -f "${disks[0]}" ]]; then
-        err "No vdisk*.img files found"
+        validation_fail "No vdisk*.img files found"
         continue
     fi
 
