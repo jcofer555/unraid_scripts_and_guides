@@ -1,48 +1,152 @@
 ```bash
 #!/bin/bash
 
-# Define VM names
-vm_names=("vm1" "vm2" "vm3")  # Add as many as needed
+# VM names
+vm_names=("vm1" "vm2" "vm3")
 
-# Base paths
+# Backup base path
 backup_path="/mnt/user/data/computer/backups/unraid_vms"
 
-        #### DON'T CHANGE ANYTHING BELOW HERE ####
+# VM storage location
+vm_domains="/mnt/user/domains"
 
+DRY_RUN=false
+
+        #### DON'T CHANGE ANYTHING BELOW HERE UNLESS YOU KNOW WHAT YOU'RE DOING ####
+
+# System paths
 xml_base="/etc/libvirt/qemu"
 nvram_base="$xml_base/nvram"
-domain_base="/mnt/user/domains"
 
-# Ensure required directories exist
 mkdir -p "$nvram_base"
 
-for vm_name in "${vm_names[@]}"; do
-    echo "Restoring VM: $vm_name"
+# ========================
+# Output helper functions
+# ========================
+log()  { echo -e "[INFO]  $1"; }
+warn() { echo -e "[WARN]  $1"; }
+err()  { echo -e "[ERROR] $1"; }
 
-    vm_backup_path="$backup_path/$vm_name"
-    vm_xml="$xml_base/$vm_name.xml"
-    vm_domain_path="$domain_base/$vm_name"
+# ========================
+# Dry-run mode detection
+# ========================
+if [[ "$1" == "--dry-run" ]]; then
+    DRY_RUN=true
+    warn "RUNNING IN DRY-RUN MODE — NO CHANGES WILL BE MADE"
+fi
 
-    # Navigate to the VM's backup folder
-    cd "$vm_backup_path" || { echo "Backup path not found for $vm_name"; continue; }
+# Wrapper for commands
+run_cmd() {
+    if $DRY_RUN; then
+        echo "[DRY RUN] $*"
+    else
+        eval "$@"
+    fi
+}
 
-    # Stop the VM if it's running
-    virsh shutdown "$vm_name"
-    sleep 5
+# ============================================================
+# Process each VM
+# ============================================================
+for vm in "${vm_names[@]}"; do
+    echo ""
+    echo "===================================="
+    echo " Restoring VM: $vm"
+    echo "===================================="
 
-    # Remove old XML and restore new one
-    rm -f "$vm_xml"
-    cp "$vm_name.xml" "$vm_xml"
+    backup_dir="$backup_path/$vm"
 
-    # Restore NVRAM and disk image
-    cp *.fd "$nvram_base/"
-    mkdir -p "$vm_domain_path"
-    cp *.img "$vm_domain_path/"
+    xml_file="$backup_dir/$vm.xml"
+    nvram_file=$(ls "$backup_dir"/*_VARS-pure-efi.fd 2>/dev/null | head -n1)
+    disks=( "$backup_dir"/vdisk*.img )
 
-    # Redefine the VM
-    virsh define "$vm_xml"
+    # --------------------------------------
+    # Validate backup contents
+    # --------------------------------------
+    if [[ ! -d "$backup_dir" ]]; then
+        err "Backup folder missing: $backup_dir"
+        continue
+    fi
+    if [[ ! -f "$xml_file" ]]; then
+        err "XML file missing: $xml_file"
+        continue
+    fi
+    if [[ ! -f "$nvram_file" ]]; then
+        err "NVRAM file missing (expected UUID*_VARS-pure-efi.fd)"
+        continue
+    fi
+    if [[ ! -f "${disks[0]}" ]]; then
+        err "No vdisk*.img files found"
+        continue
+    fi
 
-    echo "Restore of $vm_name is complete"
+    log "Backup validated."
+
+    # --------------------------------------
+    # Shutdown VM cleanly
+    # --------------------------------------
+    if virsh list --state-running | grep -q " $vm "; then
+        log "Shutting down VM gracefully..."
+
+        run_cmd virsh shutdown "$vm"
+        sleep 10
+
+        if virsh list --state-running | grep -q " $vm "; then
+            warn "VM still running — forcing stop."
+            run_cmd virsh destroy "$vm"
+        fi
+    else
+        log "VM is not running."
+    fi
+
+    # --------------------------------------
+    # Restore XML
+    # --------------------------------------
+    dest_xml="$xml_base/$vm.xml"
+    log "Restoring XML → $dest_xml"
+
+    run_cmd rm -f "$dest_xml"
+    run_cmd cp "$xml_file" "$dest_xml"
+    run_cmd chmod 644 "$dest_xml"
+
+    # --------------------------------------
+    # Restore NVRAM (keep UUID name!)
+    # --------------------------------------
+    nvram_filename=$(basename "$nvram_file")
+    dest_nvram="$nvram_base/$nvram_filename"
+
+    log "Restoring NVRAM → $dest_nvram"
+
+    run_cmd rm -f "$dest_nvram"
+    run_cmd cp "$nvram_file" "$dest_nvram"
+    run_cmd chmod 644 "$dest_nvram"
+
+    # --------------------------------------
+    # Restore vdisks
+    # --------------------------------------
+    dest_domain="$vm_domains/$vm"
+    run_cmd mkdir -p "$dest_domain"
+
+    for d in "${disks[@]}"; do
+        file=$(basename "$d")
+        log "Copying disk: $file → $dest_domain/"
+        run_cmd cp "$d" "$dest_domain/$file"
+        run_cmd chmod 644 "$dest_domain/$file"
+    done
+
+    # --------------------------------------
+    # Redefine VM
+    # --------------------------------------
+    log "Redefining VM via libvirt…"
+    run_cmd virsh define "$dest_xml"
+
+    log "VM $vm restore completed."
+
 done
+
+echo ""
+echo "=========================================="
+echo "       VM RESTORE PROCESS COMPLETE"
+echo "=========================================="
+$DRY_RUN && echo "[DRY RUN] No changes were made."
 
 ```
