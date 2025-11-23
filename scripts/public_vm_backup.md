@@ -2940,7 +2940,7 @@ only_send_error_notifications="0"
   fi
 
 echo "changing owner to $backup_owner"
-chown -R "$backup_owner:users" "/mnt/user/data/computer/backups/unraid_vms"
+chown -R "$backup_owner:users" "$backup_location"
 
   exit 0
 
