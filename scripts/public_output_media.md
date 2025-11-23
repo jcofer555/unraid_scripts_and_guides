@@ -14,7 +14,7 @@ MOVIESDIR4="/mnt/user/mymedia/media/movies/marvel-dc"
 MOVIESOUTPUT="/mnt/user/data/computer/movies_list.txt"
 
 
-        #### DON'T CHANGE ANYTHING HERE EXCEPT FOR THE BOTTOM VARIABLES SECTIONS AT THE BOTTOM TO MATCH THE VARIABLES ABOVE ####
+        #### DON'T CHANGE ANYTHING BELOW HERE EXCEPT FOR THE BOTTOM VARIABLES SECTIONS AT THE BOTTOM TO MATCH THE VARIABLES ABOVE ####
     
 
 # Function to find which disk a file/folder is on
