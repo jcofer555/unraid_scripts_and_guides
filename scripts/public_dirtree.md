@@ -2,7 +2,7 @@
 #!/usr/bin/python3
 
 ##################################################
-# This requires the python3 plugin to be installed
+# Requires the python3 plugin to be installed
 ##################################################
 
 print("public_dirtree script has started", flush=True)
