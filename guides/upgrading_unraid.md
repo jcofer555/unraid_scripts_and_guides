@@ -31,7 +31,7 @@
   > - Optional: go to settings —> global share settings and set permit exclusive shares to yes
   > - Read the context sensitive help by pressing f1 on the keyboard. Also see the unraid documentation for more info at https://docs.unraid.net/unraid-os/release-notes/6.12.0/#exclusive-shares
 ### 13. In the array operations section at the bottom of the main page in unraids webui you should see “Configuration valid”. If so, start the array
-### 14. Once the array has started and things look OKok, re-enable docker at settings —> docker enabled docker to yes and hit apply and vm manager services at settings —> vm manager and hit apply
+### 14. Once the array has started and things look ok, re-enable docker at settings —> docker enabled docker to yes and hit apply and vm manager services at settings —> vm manager and hit apply
   > [!NOTE]
   > - Confirm docker is started by checking the status at the top right of the settings —> docker screen
   > - Confirm vm manager is started by checking the status at the top right of the settings —> vm manager screen
