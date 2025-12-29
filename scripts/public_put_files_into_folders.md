@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Set the target directory to the path you want to work on.
-TARGET_DIR="/mnt/user/sharename/test"
+TARGET_DIR="/mnt/cache/isos"
 
         #### DON'T CHANGE ANYTHING BELOW HERE ####
 
@@ -10,15 +10,15 @@ TARGET_DIR="/mnt/user/sharename/test"
 cd "$TARGET_DIR" || { echo "Error: Could not change directory to $TARGET_DIR exiting without doing anything"; exit 1; }
 
 # Enable nullglob to avoid issues when no files match.
-shopt -s nullglob
+# Enable nocaseglob so all cases of extensions are considered.
+shopt -s nullglob nocaseglob
 
-# Iterate over every item in the directory.
-for file in *; do
+# Iterate only over files with the allowed extensions.
+for file in *.mp4 *.mov *.avi *.wmv *.webm *.mkv *.mxf *.mpeg *.vob *.m2fs *.srt *.vtt *.sub *.ssa *.ass *.stl *.ttml *.dfxp *.scc *.mcc *.sbv *.lrc *.sup *.idx; do
     # Process only regular files.
     [ -f "$file" ] || continue
 
-    # Get the base name (everything before the last dot). Files with the same 
-    # base name (even if they have different extensions) will share the same folder.
+    # Get the base name (everything before the last dot).
     base="${file%.*}"
 
     # Create the directory if it doesn't already exist.
@@ -29,4 +29,5 @@ for file in *; do
 done
 
 echo "Script is done running"
+
 ```
