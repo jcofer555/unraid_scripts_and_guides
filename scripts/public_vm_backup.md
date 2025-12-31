@@ -4,7 +4,7 @@
 # Variables
 
 # Backup destination directory
-backup_location="/mnt/user/data/computer/backups/unraid_vms"
+backup_location="/mnt/user/backups/vms"
 
 # List of VMs to back up (newline-separated)
 vms_to_backup="
@@ -14,7 +14,7 @@ vm3
 "
 
 # Owner for backup files
-backup_owner="jcofer555"
+backup_owner="nobody"
 
         #### DON'T CHANGE ANYTHING BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ####
 

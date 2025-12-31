@@ -9,7 +9,7 @@
 vm_names=("vm1" "vm2" "vm3")
 
 # Backup base path
-backup_path="/mnt/user/data/computer/backups/unraid_vms"
+backup_path="/mnt/user/backups/vms"
 
 # VM storage location
 vm_domains="/mnt/user/domains"
