@@ -49,6 +49,32 @@ enabled="1"
 # when set to 1, vms_to_backup will be used as an exclusion list.
 backup_all_vms="0"
 
+# Track which VMs were running before shutdown
+vms_stopped_by_script=()
+
+# Loop through each VM listed in vms_to_backup
+for vm in $vms_to_backup; do
+    vm_state_before=$(virsh domstate "$vm" 2>/dev/null)
+
+    if [[ "$vm_state_before" == "running" ]]; then
+        echo "Stopping VM: $vm"
+        vms_stopped_by_script+=("$vm")   # record it
+
+        virsh shutdown "$vm"
+
+        echo -n "Waiting for $vm to stop"
+        while [[ "$(virsh domstate "$vm" 2>/dev/null)" != "shut off" ]]; do
+            echo -n "."
+            sleep 2
+        done
+
+        echo ""
+        echo "VM $vm is now stopped."
+    else
+        echo "Skipping stop for $vm (already off)"
+    fi
+done
+
 # Loop through each VM listed in vms_to_backup
 for vm in $vms_to_backup; do
     echo "Stopping VM: $vm"
@@ -2959,6 +2985,15 @@ only_send_error_notifications="0"
 
 echo "changing owner to $backup_owner"
 chown -R "$backup_owner:users" "$backup_location"
+
+echo "Starting VMs that were stopped by this script..."
+
+for vm in "${vms_stopped_by_script[@]}"; do
+    echo "Starting VM: $vm"
+    virsh start "$vm"
+done
+
+echo "VM restart phase complete."
 
   exit 0
 
