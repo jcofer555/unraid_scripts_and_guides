@@ -49,6 +49,24 @@ enabled="1"
 # when set to 1, vms_to_backup will be used as an exclusion list.
 backup_all_vms="0"
 
+# Loop through each VM listed in vms_to_backup
+for vm in $vms_to_backup; do
+    echo "Stopping VM: $vm"
+
+    # Send ACPI shutdown signal
+    virsh shutdown "$vm"
+
+    # Wait until the VM is fully stopped
+    echo -n "Waiting for $vm to stop"
+    while [[ "$(virsh domstate "$vm" 2>/dev/null)" != "shut off" ]]; do
+        echo -n "."
+        sleep 2
+    done
+
+    echo ""
+    echo "VM $vm is now stopped."
+done
+
 # list of specific vdisks to be skipped separated by a new line. use the full path.
 # NOTE: must match path in vm config file. remember this if you change the virtual disk path to enable snapshots.
 vdisks_to_skip="
